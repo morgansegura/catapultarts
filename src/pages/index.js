@@ -19,7 +19,7 @@ class Pages extends Component {
     console.log(data)  
     return (
       <Layout>
-        <section className="section">
+        <section className="section section__index">
 
           {!!data.acf.hero_billboard_boolean 
             && data.acf.hero_billboard_boolean === true ?

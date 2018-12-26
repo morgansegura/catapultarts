@@ -1,4 +1,5 @@
 .hero {
+    overflow: hidden;
 
     &__main {
         
@@ -8,46 +9,66 @@
     }
     &__image-container {
         position: relative;
-        width: 100%;
+
+        & .gatsby-image-wrapper img {
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+
+            @mixin atSmall {
+                transform: scale(1.5) translateY(-20%);
+            }
+        }
     }
     &__meta-container {
         position: absolute;
         display: flex;
         flex-direction: column;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: 50%;
+        left: 50%;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(-50%) translateX(-50%);
 
-        &.top {
-            top: 5%;
-            justify-content: flex-start;
-        }
-        &.bottom {
-            top: auto;
-            bottom: 5%;
-            justify-content: flex-end;   
-        }
-        &.middle {
-            top: auto;
-            justify-content: center;                      
-        }
-        &.left {  
-            left: 5%;     
-            align-items: flex-start;  
-        }
-        &.right { 
-            left: auto;
-            right: 5%;                
-            align-items: flex-end;
-        }
-        &.center {
-            left: auto;
-            align-items: center;               
+        @mixin atMedium {
+            
+            &.top {
+                top: 5%;
+                justify-content: flex-start;
+            }
+            &.bottom {
+                top: auto;
+                bottom: 5%;
+                justify-content: flex-end;   
+            }
+            &.middle {
+                top: auto;
+                justify-content: center;                      
+            }
+            &.left {  
+                left: 5%;     
+                align-items: flex-start;  
+            }
+            &.right { 
+                left: auto;
+                right: 5%;                
+                align-items: flex-end;
+            }
+            &.center {
+                left: auto;
+                align-items: center;               
+            }            
         }
     }
     &__title {
-        font-size: 50px;
+        line-height: 1;
+
+        @mixin atMedium {
+            font-size: 50px;
+        }        
     }
     &__caption {
         font-size: 22px;
@@ -59,4 +80,17 @@
         font-weight: 600;
         font-size: 18px;
     }    
+}
+
+.section__index {
+    & .hero, & .hero__meta-container {
+        height: 40vh;
+
+        @mixin atSmall {
+            height: 60vh;
+        }
+        @mixin atMedium {
+
+        }
+    }
 }

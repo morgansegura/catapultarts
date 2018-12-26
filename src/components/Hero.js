@@ -25,7 +25,7 @@ class Hero extends Component{
         console.log(this.props)
         console.log(node)
         return (        
-            <div className="hero hero__main theme--od">                
+            <div className="container mt-15 hero hero__main theme--od">                
                 {!!node && this.props.heroImage === true ?
                 <div className="hero__inner"> 
                     <div className="hero__image-container">
