@@ -1,51 +1,55 @@
 .header {
     position: relative;
-    background-color: white;
-    border-bottom: 1px solid $main-white;
+    margin: 0 auto;
+    padding: 0;
     position: sticky;
     top: 0;
     overflow: visible;
     z-index: 101;
+    width: 100%;
+    background: linear-gradient(to right, $main-base-color 50%, $main-base-color  50%);
 
     &__inner {
         position: relative;
         display: flex;
         align-items: center;     
+        justify-content: flex-start; 
 
-        &.start {
-            justify-content: flex-start;            
-        }
-        &.center {
-            justify-content: center;            
-        }
-        &.space-between {
-            justify-content: space-between;            
+        @mixin atMedium {
+            justify-content: space-between;             
         }
     }
 
     .logo {
-        z-index: 2;
-        padding: 0;
-        color: $main-black;
+        position: relative;
+        width: 75px;
+        height: 75px;
+        /* flex parent rules */
+        flex-basis: 100%;
+        /* flex children rules */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: red;
 
-        &__text--inner {
-            display: flex;
-            flex-direction: row; 
-        }
         &__header {
-            overflow: hidden;
+            width: 40px;
             height: 40px;
         }
         &__image {
-            -webkit-mask: url(../images/logo.svg) no-repeat center;
-            mask: url(../images/logo.svg) no-repeat center;
-            background-size: cover;
+            -webkit-mask: url(../images/logo.svg) no-repeat 50% 0px;
+            mask: url(../images/logo.svg) no-repeat 50% 0px;
+            /* background-size: 50%; */
 
             span {
                 opacity: 0;
                 visibility: hidden;
                 position: relative;
                 z-index: -1;
+            }
+
+            @mixin atMedium {
+                margin: 0;
             }
         }
         &--white {
@@ -58,12 +62,21 @@
             background-color: google-color(grey, 400);
         }
         &--cta {
-            background-color: color($facebook-blue a(.9));
+            background-color: white;
         }
         & .title {
             font-family: $cursive;
             font-weight: 300;
             font-size: 40px;
         }
+    }
+
+    @mixin atMedium {
+        background: linear-gradient(to right, $main-base-color 50%, $main-base-color-darker 50%);
+
+        .logo {
+            flex-basis: 50%;
+            justify-content: flex-start;
+        }     
     }
 }

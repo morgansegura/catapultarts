@@ -1,15 +1,38 @@
 .nav {
-    /* position: absolute; */
-    right: 0;
+    height: 100vh;
+    width: 280px;
+    padding-top: 60px;    
+    position: fixed;
+    z-index: 3;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, .6);
+    top: 0;
+    right: -300px;
+    background-color: color($base-bg-color lightness(35%));
+    transition: right .3s ease-out;
+    
+    .mobile-nav--is-open & {
+        right: 0;        
+    }
+
+    @mixin atMedium {
+        width: 100%;
+        right: 0;
+        height: auto;
+        padding-top: 0;
+        position: relative;
+        box-shadow: none;
+    }
 
     &__inner { 
         display: flex;
-        align-items: center;
-        justify-content: flex-end;
+        flex-direction: column;
+
+        @mixin atMedium {
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: flex-end;
+        }
     }    
-    &__item {
-        padding: 5px 10px;
-    }   
     .menu-icon {
         color: google-color(grey, 700);
         font-size: 36px;
@@ -19,73 +42,74 @@
             color: white;
         }
     }
-}
-[class^=MuiPaper-root-] {
-    background-color: $main-white !important;
-}  
-.nav__menu {
-
-    .nav__item {
-        display: block;
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: color($base-bg-color shade(20%));
         width: 100%;
         font-weight: 600;
-        color: google-color(grey, 600);
-        text-transform: uppercase;
+        color: $base-font-color-light;
+        padding: 20px 20px;
         transition: all .3s ease-out;
 
+        &.active {
+            color: white;
+            background-color: $main-base-color-dark;
+        }
         &:hover {
-            color: google-color(grey, 900);
+            color: color($base-font-color-light lightness(75%));
+            background-color: $main-base-color;
         }
         &:active {
-            color: google-color(grey, 500);
-        }
-
-    }
-    li {
-        transition: all .3s ease-out;
-
-        &:hover {            
-            background-color: color(white a(.5));
-        }
-        &:active {
-            background-color: color(black a(.1));
-        }   
+            color: white;
+        }       
     }
 
-    .btn--black {
-        &:hover {
-            color: google-color(grey, 800);
-            border-color: google-color(grey, 500);
-            /* background-color: google-color(grey, 400); */
-        }
-        &:active {
-            color: google-color(grey, 800);
-            border-color: google-color(grey, 500);
-            background-color: google-color(grey, 400);
-        }
-    } 
+    @mixin atMedium {
+
+        background-color: $main-base-color;
+
+        &__item {
+            background-color: $main-base-color-darker; 
+
+            &.active {
+                color: white;
+                background-color: $main-base-color-dark;
+            }
+            &:hover {
+                color: color($base-font-color-light lightness(75%));
+                background-color: color($base-bg-color lightness(25%));
+            }
+            &:active {
+                color: white;
+            }                           
+        }    
+    }     
 }
 
 .nav__trigger {
-    position: absolute;
-    right: 0;
+    position: fixed;
+    display: none; 
+    top: 20px;   
+    right: 20px;
     cursor: pointer;
-    width: 30px;
-    height: 10px;
+    width: 35px;
+    height: 16px;
 
     &--inner, &::before, &::after {
         content: "";
         position: absolute;
         width: 100%;
-        height: 3px;
-        background-color: google-color(grey, 800);
-        /* border-radius: 30px;*/
+        height: 4px;
+        background-color: $base-font-color-light;
+        border-radius: 30px;
         left: 0;
-        transform: translate(0, -50%);
         transition: all .3s ease-out;
+        transform-origin: 100% 0;
     }
     &--inner {
-        top: 50%;
+        top: 8px;
     }    
     &::before {
         top: 0;
@@ -98,9 +122,44 @@
         .nav__trigger--inner, 
         &::before, 
         &::after {
-            background-color: google-color(grey, 600);
+            background-color: color($base-font-color-light lightness(75%));
         }
-    }    
+    }
+    .is--mobile-nav & {
+        display: block;
+    }  
+    .mobile-nav--is-open & {
+
+    }  
+    @mixin atMedium {
+        .is--mobile-nav & {
+            display: none;
+        }         
+    }
+}
+
+.mobile-nav--is-open {
+    & .nav__trigger {
+        &--inner {
+            top: 100%;
+            transform:  rotate(40deg) 
+                        scaleX(.75) 
+                        translateX(0)
+                        translateY(-10%);
+        }    
+        &::before {
+            transform:  rotate(90deg) 
+                        scaleX(.5) 
+                        translateX(100%)
+                        translateY(0);
+        }
+        &::after {
+            transform:  rotate(0) 
+                        scaleX(.5) 
+                        translateX(0)
+                        translateY(0);
+        }
+    }
 }
 
 

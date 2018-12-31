@@ -10,6 +10,12 @@ $main-white: #ededed;
 $main-gray: #4a4a4a;
 $main-gray-light: #a9a9a9;
 
+$main-base-color-text: #6978a6;
+$main-base-color-cta: #6088cc;
+$main-base-color: #1f3161;
+$main-base-color-dark: #1d2c57;
+$main-base-color-darker: #19274e;
+
 /* Social Colors */
 $facebook-blue: #4267b2;
 $instagram-grey: #231F20;
@@ -43,5 +49,6 @@ $base-font-family: $sans-primary;
 $base-font-weight: 400;
 $base-font-height: 1.7;
 $base-font-color: $main-gray;
-$base-bg-color: white;
+$base-font-color-light: $main-base-color-text;
+$base-bg-color: $main-base-color;
 $base-transition: all .3s ease-out;

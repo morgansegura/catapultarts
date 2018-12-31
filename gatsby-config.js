@@ -10,11 +10,12 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
+    'gatsby-plugin-sass',    
     {
       resolve: 'gatsby-source-wordpress',
       options: {
         // The base url to your WP site.
+        // Production
         baseUrl: 'catapultarts.com/app',
         // WP.com sites set to true, WP.org set to false
         hostingWPCOM: false,
@@ -40,31 +41,28 @@ module.exports = {
           "/*/*/media",
           "/*/*/tags",
           "/*/*/taxonomies",
+          "/*/*/menus",
           "/*/*/users",
           "/*/*/acf",
-          "/*/*/settings",
         ],
         excludedRoutes: [
-          "/*/*/block-renderer",
-          "/wp-json/v2/block-renderer/*",
-          // "/*/*/comments",
+          "/wp/v2/block-renderer",
+          "/wp/v2/comments/(?P<id>[\d]+)",
           "/yoast/**",
-          // "/*/*/users",
           "/*/*/users/me",
           "/wp/v2/users/me",
-          // "/oembed/*",
-          // "/acf/v2/options",
           "/wp-json/v2/settings",
           "/*/*/settings",
           "/wp-json/v2/themes",
-          "/*/*/themes"
+          "/wp/v2/search",
+          "/*/*/themes" 
         ],
         normalizer: function ({ entities }) {
           return entities
         },             
         verboseOutput: true,                        
-      },
-    },
+      },      
+    }, 
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -78,7 +76,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
-        useMozJpeg: false,
+        useMozJpeg: true,
         stripMetadata: true,
       },
     },

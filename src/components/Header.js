@@ -5,24 +5,20 @@ import Logo from './Accessories/Logo'
 
 
 class Header extends Component {    
-    render() {
 
-        const menuStyle = 'drawer'
+    render() {
+        const menuStyle = 'desktop'
 
         return (
             <header className="header">
                 <div className="container">
-                    <div className={`header__inner center ${menuStyle}`}>
+                    <div className="header__inner">
                         <Link className="logo" to="/" title="">
-                            <div className="logo__text">
-                                <div className="logo__text--inner">
-                                    {!!Logo ?
-                                        <Logo classList={`logo__header logo--cta`} />
-                                    : 
-                                        <h2 className="title">{this.props.siteTitle}</h2>
-                                    }
-                                </div>
-                            </div>
+                            {!!Logo ?
+                                <Logo classList={`logo__header logo--cta`} />
+                                :
+                                <h2 className="title">{this.props.siteTitle}</h2>
+                            }
                         </Link>
                         <Navbar menuStyle={menuStyle} />
                     </div>

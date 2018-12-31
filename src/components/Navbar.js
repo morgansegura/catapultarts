@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
-import DrawerMenu from './ui/DrawerMenu'
 
 const Navbar = (props) => {
   
+  const openMobileNav = () => {
+    const wrapper = document.getElementById("wrapper");
+    wrapper.classList.toggle("mobile-nav--is-open");
+  }
+
   return (
     <StaticQuery
       query={graphql`
@@ -20,21 +24,21 @@ const Navbar = (props) => {
     `}
       render={data => (
         <nav className="nav nav__main">
-          {!!props.menuStyle && props.menuStyle === `drawer` ?
-            <DrawerMenu menuData={data.allWordpressPage.edges} />
-            :
-            <div className="nav__inner">
-              {data.allWordpressPage.edges.map(edge => (
-                <Link
-                  className="navbar-item"
-                  to={edge.node.slug}
-                  key={edge.node.slug}
-                >
-                  {edge.node.title}
-                </Link>
-              ))}
+          <div className="nav__inner">
+            {data.allWordpressPage.edges.map(edge => (
+              <Link
+                activeClassName="active"
+                className="nav__item"
+                to={edge.node.slug}
+                key={edge.node.slug}
+              >
+                {edge.node.title}
+              </Link>
+            ))}
+            <div className="nav__trigger" onClick={openMobileNav}>
+              <div className="nav__trigger--inner"></div>
             </div>
-          }
+          </div>
         </nav>
       )}
     />

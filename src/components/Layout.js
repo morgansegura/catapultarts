@@ -3,17 +3,38 @@ import Helmet from 'react-helmet'
 import Header from './Header'
 import Footer from './Footer'
 import ContactModal from './Forms/ContactForm'
-
 import config from '../data/siteConfig'
+
+// import {
+//   isMobile
+// } from "react-device-detect";
+
 import '../assets/css/styles.css'
 
 class TemplateWrapper extends Component {
 
+  state = {
+    userHasScrolled: false,
+    isMobileNav: false,
+    mobileNavIsOpen: false
+  }
+
+  componentDidMount() {
+
+    const wrapper = document.getElementById("wrapper");
+
+    window.onscroll = (e) => {
+      this.state.userHasScrolled = true
+      alert('scrolling')
+    }
+
+  }
+
   render() {
     const { children } = this.props;
-      // console.log(this.props)
+
       return (  
-        <div id="wrapper" className="wrapper is--mobile-nav">
+        <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-open">
           <Helmet>
             <title>{config.siteTitleAlt}</title>
             <meta name="description" content={config.siteDescription} />

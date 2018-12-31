@@ -56,6 +56,24 @@ export default Pages
 // Set here the ID of the home page.
 export const pageQuery = graphql`
   query  {
+    allWordpressWpApiMenusMenusItems {
+      edges {
+        node {
+          name
+          count
+          items {
+            order
+            title
+            url
+            wordpress_children {
+              wordpress_id
+              title
+              url
+            }
+          }
+        }
+      }
+    }  
     wordpressPage(slug: { eq: "home"})  {
       acf {
         hero_boolean
