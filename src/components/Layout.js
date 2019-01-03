@@ -49,6 +49,7 @@ class TemplateWrapper extends Component {
             <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
             <meta name="msapplication-TileColor" content="#da532c" />
             <meta name="theme-color" content="#ffffff" />
+            <script src="//code.iconify.design/1/1.0.0-rc1/iconify.min.js"></script>
           </Helmet>
           <Header config={config} />
           <main className="main">

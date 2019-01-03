@@ -6,6 +6,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: 'Gatsby + WordPress Starter',
+    siteUrl: 'https://catapultarts.com/app',
     keywords: 'Gatsby.js, React.js, GraphQL, Netlify, NetlifyCMS, Gulp, PostCSS'
   },
   plugins: [
