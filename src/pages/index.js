@@ -121,7 +121,7 @@ class Pages extends Component {
                   Iterative approaches to corporate strategy foster collaborative thinking to further
                   the overall value proposition.
                 </p>
-                <a href="">Learn More <span className="mdi mdi-arrow-right"></span></a>
+                <a href="">Learn More <span className="iconify" data-icon="mdi-arrow-right"></span></a>
               </div>
             </div>       
           </div>
@@ -138,12 +138,12 @@ class Pages extends Component {
                   Iterative approaches to corporate strategy foster collaborative thinking to further
                   the overall value proposition.
                 </p>
-                <a href="">Learn More <span className="mdi mdi-arrow-right"></span></a>
+                <a href="">Learn More <span className="iconify" data-icon="mdi-arrow-right"></span></a>
               </div>
             </div>          
             <div className="col-12 col-md-6">
               <div className="services__image content__block content__abs-center bg--alt buffer--y-xl">
-
+ 
               </div>
             </div>
           </div>

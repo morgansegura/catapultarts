@@ -6,7 +6,6 @@ import ContactModal from './Forms/ContactForm'
 import config from '../data/siteConfig'
 import AOS from 'aos'
 
-
 // import {
 //   isMobile
 // } from "react-device-detect";

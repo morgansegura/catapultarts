@@ -30,7 +30,7 @@ gulp.task('styles', function () {
                 colorFunctions
             ])
         )
-        .on('error', errorInfo)          
+        .on('error', errorInfo)    
         .pipe(postcss([cssDeclarationSorter({ order: 'smacss' })])) 
         .pipe(cssnano())     
         .pipe(gulp.dest('./src/assets/css'));

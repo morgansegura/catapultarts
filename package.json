@@ -7,6 +7,7 @@
     "@glidejs/glide": "^3.2.4",
     "@mdi/font": "^3.2.89",
     "aos": "^2.3.4",
+    "bootstrap": "4.2.1",
     "dotenv": "^6.2.0",
     "gatsby": "^2.0.0",
     "gatsby-awesome-pagination": "^0.3.3",
@@ -19,15 +20,25 @@
     "gatsby-plugin-netlify": "^2.0.0",
     "gatsby-plugin-nprogress": "^1.0.9",
     "gatsby-plugin-offline": "^1.0.12",
+    "gatsby-plugin-postcss": "^2.0.2",
     "gatsby-plugin-purgecss": "^2.4.0",
     "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-plugin-sass": "^2.0.1",
     "gatsby-plugin-sharp": "^2.0.5",
     "gatsby-plugin-sitemap": "^2.0.3",
     "gatsby-plugin-twitter": "^1.0.14",
+    "gatsby-plugin-typography": "^2.2.4",
+    "gatsby-remark-autolink-headers": "^1.4.11",
+    "gatsby-remark-better-embed-video": "^2.4.0",
+    "gatsby-remark-copy-linked-files": "^1.5.25",
+    "gatsby-remark-images": "^2.0.1",
+    "gatsby-remark-prismjs": "^3.2.0",
+    "gatsby-remark-relative-images": "^0.2.1",
     "gatsby-remark-responsive-iframe": "^2.0.7",
     "gatsby-source-filesystem": "^2.0.12",
     "gatsby-source-woocommerce": "^0.2.0",
     "gatsby-source-wordpress": "^3.0.1",
+    "gatsby-transformer-remark": "^2.1.1",
     "gatsby-transformer-sharp": "^2.1.1",
     "lodash": "^4.17.5",
     "parcel-bundler": "^1.9.4",
@@ -41,6 +52,9 @@
     "react-modal": "^3.7.1",
     "react-share": "^1.19.0",
     "react-twitter-widgets": "^1.7.1",
+    "react-typography": "^0.16.18",
+    "typography": "^0.16.18",
+    "typography-theme-noriega": "^0.16.18",
     "uuid": "^3.2.1"
   },
   "keywords": [
@@ -60,12 +74,12 @@
   "devDependencies": {
     "concurrently": "^4.0.1",
     "css-declaration-sorter": "^4.0.1",
-    "cssnano-preset-advanced": "^4.0.6",    
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.1.0",
     "gulp": "^3.9.1",
     "gulp-cssnano": "^2.1.3",
     "gulp-postcss": "^8.0.0",
+    "gulp-purgecss": "^1.1.1",
     "gulp-watch": "^5.0.1",
     "postcss-color-function": "^4.0.1",
     "postcss-for": "^2.1.1",
@@ -76,7 +90,7 @@
     "postcss-pixels-to-rem": "^0.8.0",
     "postcss-preset-env": "^6.1.1",
     "postcss-processor-order": "^0.1.1",
-    "postcss-simple-vars": "^5.0.1",  
+    "postcss-simple-vars": "^5.0.1",
     "prettier": "^1.7.4",
     "rimraf": "^2.6.2"
   },
@@ -84,16 +98,5 @@
     "trailingComma": "es5",
     "semi": false,
     "singleQuote": true
-  },
-  "cssnano": {
-    "preset": [
-      "advanced",
-      {
-        "discardComments": {
-          "removeAll": true
-        }
-      }      
-    ]
-    
   }
 }
