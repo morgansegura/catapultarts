@@ -4,6 +4,8 @@ import Header from './Header'
 import Footer from './Footer'
 import ContactModal from './Forms/ContactForm'
 import config from '../data/siteConfig'
+import AOS from 'aos'
+
 
 // import {
 //   isMobile
@@ -25,14 +27,15 @@ class TemplateWrapper extends Component {
 
     window.onscroll = (e) => {
       this.state.userHasScrolled = true
-      alert('scrolling')
+      console.log('scrolling')
     }
-
+    // AOS
+    AOS.init()
   }
 
   render() {
     const { children } = this.props;
-
+      //console.log(this.props)
       return (  
         <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-open">
           <Helmet>

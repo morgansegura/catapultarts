@@ -1,5 +1,6 @@
 .hero {
     overflow: hidden;
+    background-color: $main-base-color;
 
     &__main {
         

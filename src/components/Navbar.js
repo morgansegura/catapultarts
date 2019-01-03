@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 
 const Navbar = (props) => {
-  
+
   const openMobileNav = () => {
     const wrapper = document.getElementById("wrapper");
     wrapper.classList.toggle("mobile-nav--is-open");
@@ -20,21 +20,44 @@ const Navbar = (props) => {
             }
           }
         }
+        allWordpressWpApiMenusMenusItems {
+          edges {
+            node {
+              name
+              count
+              items {
+                order
+                title
+                url
+                # wordpress_children {
+                #   wordpress_id
+                #   title
+                #   url
+                # }
+              }
+            }
+          }
+        }
       }
     `}
       render={data => (
         <nav className="nav nav__main">
+        {console.log(data) }
           <div className="nav__inner">
-            {data.allWordpressPage.edges.map(edge => (
-              <Link
-                activeClassName="active"
-                className="nav__item"
-                to={edge.node.slug}
-                key={edge.node.slug}
-              >
-                {edge.node.title}
-              </Link>
-            ))}
+            {data.allWordpressWpApiMenusMenusItems.edges.map(edge => (
+              edge.node.name === `Main Menu` ? 
+                edge.node.items.map((item, i) => (
+                  <Link
+                    activeClassName="active"
+                    className="nav__item"
+                    to={item.url}
+                    key={i}
+                  >
+                    {item.title}
+                  </Link>                  
+                ))
+              : null
+            ))}         
             <div className="nav__trigger" onClick={openMobileNav}>
               <div className="nav__trigger--inner"></div>
             </div>
@@ -46,3 +69,4 @@ const Navbar = (props) => {
 };
 
 export default Navbar;
+

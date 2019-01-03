@@ -6,27 +6,22 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: 'Gatsby + WordPress Starter',
-    siteUrl: 'https://catapultarts.com/app',
+    keywords: 'Gatsby.js, React.js, GraphQL, Netlify, NetlifyCMS, Gulp, PostCSS'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',    
+
     {
       resolve: 'gatsby-source-wordpress',
       options: {
-        // The base url to your WP site.
-        // Production
         baseUrl: 'catapultarts.com/app',
-        // WP.com sites set to true, WP.org set to false
         hostingWPCOM: false,
-        // The protocol. This can be http or https.
         protocol: 'https',
-        // Use 'Advanced Custom Fields' Wordpress plugin
         useACF: true,
         auth: {
           htaccess_user: process.env.WP_USERNAME,
           htaccess_pass: process.env.WP_PASSWORD,
-          htaccess_sendImmediately: false,          
+          htaccess_sendImmediately: false,
         },
         perPage: 100,
         // searchAndReplaceContentUrls: {
@@ -41,38 +36,19 @@ module.exports = {
           "/*/*/media",
           "/*/*/tags",
           "/*/*/taxonomies",
-          "/*/*/menus",
           "/*/*/users",
           "/*/*/acf",
+          "/*/*/menus",
         ],
-        excludedRoutes: [
-          "/wp/v2/block-renderer",
-          "/wp/v2/comments/(?P<id>[\d]+)",
-          "/yoast/**",
-          "/*/*/users/me",
-          "/wp/v2/users/me",
-          "/wp-json/v2/settings",
-          "/*/*/settings",
-          "/wp-json/v2/themes",
-          "/wp/v2/search",
-          "/*/*/themes" 
-        ],
+        excludedRoutes: [],
         normalizer: function ({ entities }) {
           return entities
-        },             
-        verboseOutput: true,                        
-      },      
-    }, 
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `norican`,
-          `fjalla one`,
-          `source sans pro\:300,400,600,700,900`
-        ]
-      }
-    },     
+        },
+        verboseOutput: true,
+      },
+    },
+
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
@@ -80,23 +56,9 @@ module.exports = {
         stripMetadata: true,
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-purgecss',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-twitter',
-    'gatsby-plugin-sitemap', 
-    {
-      resolve: "gatsby-remark-better-embed-video",
-      options: {
-        width: 800,
-        ratio: 1.77, // Optional: Defaults to 16/9 = 1.77.
-        height: 400, // Optional: Overrides optional.ratio.
-        related: false, // Optional: Will remove related videos from the end of an embedded YouTube video.
-        noIframeBorder: true, // Optional: Disable insertion of <style> border: 0.
-        showInfo: false // Optional: Hides video title and player actions.
-      }
-    },
-    `gatsby-remark-responsive-iframe`,      
+    'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

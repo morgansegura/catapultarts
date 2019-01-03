@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
@@ -17,18 +16,6 @@ export default class BlogIndexPage extends React.Component {
       </Layout>
     )
   }
-}
-
-BlogIndexPage.propTypes = {
-  data: PropTypes.shape({
-    allWordpressPost: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-  pageContext: PropTypes.shape({
-    currentPage: PropTypes.number,
-    numPages: PropTypes.number,
-  }),
 }
 
 export const pageQuery = graphql`

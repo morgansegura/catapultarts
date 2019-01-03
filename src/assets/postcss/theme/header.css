@@ -1,3 +1,7 @@
+
+.fuck-you {
+    eat: dick;
+}
 .header {
     position: relative;
     margin: 0 auto;
@@ -30,7 +34,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: red;
+        /* background-color: red; */
 
         &__header {
             width: 40px;

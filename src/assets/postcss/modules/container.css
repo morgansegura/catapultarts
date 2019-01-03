@@ -7,7 +7,7 @@
   padding-right: $pad;
   padding-left: $pad;
 
-  @mixin atSmallest {
+  /* @mixin atSmallest {
     max-width: $atSmall;
   }  
   @mixin atSmall{
@@ -20,53 +20,25 @@
 
   @mixin atLarge {
     max-width: $atLargest;
-  }
+  } */
 
   &--sm {  
-    max-width: 500px;
+    max-width: $atSmall;
   }
 
   &--md {  
-      max-width: 800px;
+      max-width: $atMedium;
   }
 
   &--lg {
-      max-width: 1000px;
+      max-width: $atLarge;
   }
 
 }
-
-.content {
-    padding-top: $pad;
-    padding-bottom: $pad;
-    padding-left: $pad;
-    padding-right: $pad;
-
-    &--sm {
-        padding-top: $pad-sm;
-        padding-bottom: $pad-sm;
-        padding-top: $pad-sm;
-        padding-bottom: $pad-sm;
-    }
-    &--md {
-        padding-top: $pad-md;
-        padding-bottom: $pad-md;        
-        padding-left: $pad-md;
-        padding-right: $pad-md;        
-    }
-    &--lg {
-        padding-top: $pad-lg;
-        padding-bottom: $pad-lg;
-        padding-left: $pad-lg;        
-        padding-right: $pad-lg;        
-    }
-    &--xl {
-        padding-top: $pad-xl;
-        padding-bottom: $pad-xl;
-        padding-left: $pad-xl;        
-        padding-right: $pad-xl;        
-    }
+.container {
+  padding-right: 1000px;
 }
+
 
 /* Margin adjustments */
 .p {
@@ -160,4 +132,169 @@
     left: 50%;
     transform: translateX(-50%);
   }
+}
+
+.buffer {
+  &--full {
+    &-sm {
+      padding: $pad-sm;    
+    }
+    &-md {
+      padding: $pad-md;
+    }
+    &-lg {
+      padding: $pad-lg;
+    }
+    &-xl {
+      padding: $pad-xl;
+    }
+  }
+  &--x {
+    &-sm {
+      padding-left: $pad-sm;    
+      padding-right: $pad-sm;    
+    }
+    &-md {
+      padding-left: $pad-md;    
+      padding-right: $pad-md;  
+    }
+    &-lg {
+      padding-left: $pad-lg;    
+      padding-right: $pad-lg;  
+    }
+    &-xl {
+      padding-left: $pad-xl;    
+      padding-right: $pad-xl;
+    }
+  }
+  &--y {
+    &-sm {
+      padding-top: $pad-sm;    
+      padding-bottom: $pad-sm;    
+    }
+    &-md {
+      padding-top: $pad-md;    
+      padding-bottom: $pad-md;  
+    }
+    &-lg {
+      padding-top: $pad-lg;    
+      padding-bottom: $pad-lg;  
+    }
+    &-xl {
+      padding-top: $pad-xl;    
+      padding-bottom: $pad-xl;
+    }
+  }
+  &--top {
+    &-sm {
+      padding-top: $pad-sm;    
+    }
+    &-md {
+      padding-top: $pad-md;
+    }
+    &-lg {
+      padding-top: $pad-lg;
+    }
+    &-xl {
+      padding-top: $pad-xl;
+    }
+  }
+  &--bottom {
+    &-sm {
+      padding-bottom: $pad-sm;    
+    }
+    &-md {
+      padding-bottom: $pad-md;
+    }
+    &-lg {
+      padding-bottom: $pad-lg;
+    }
+    &-xl {
+      padding-bottom: $pad-xl;
+    }
+  }
+  &--left {
+    &-sm {
+      padding-left: $pad-sm;    
+    }
+    &-md {
+      padding-left: $pad-md;
+    }
+    &-lg {
+      padding-left: $pad-lg;
+    }
+    &-xl {
+      padding-left: $pad-xl;
+    }
+  }
+  &--right {
+    &-sm {
+      padding-right: $pad-sm;    
+    }
+    &-md {
+      padding-right: $pad-md;
+    }
+    &-lg {
+      padding-right: $pad-lg;
+    }
+    &-xl {
+      padding-right: $pad-xl;
+    }
+  }
+}
+.bg {
+    &--light {
+        background-color: $main-base-color-body;
+    }  
+    &--alt {
+        background-color: $main-base-color;
+    }  
+    &--white {
+        background-color: white;
+    }  
+}
+.content {
+  position: relative;
+    &__abs-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.anchor {
+  &__view {
+    color: $main-base-color;
+    font-size: 14px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;  
+  }
+  &__gap {
+    background-color: $main-base-color;
+    position: relative;
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 100px;
+    height: 1px;
+  }
+}
+.content__block {  
+    & .title {
+        color: $main-base-color-dark;
+        font-size: 36px;
+        line-height: 1.2;
+        font-weight: 800;
+    }
+    & .copy {
+        color: $main-base-color;
+        font-size: 18px;
+        font-weight: 300;
+    }
+}
+
+.mission {
+  
 }

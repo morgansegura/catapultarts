@@ -1,7 +1,7 @@
 .nav {
     height: 100vh;
     width: 280px;
-    padding-top: 60px;    
+    padding-top: 75px;    
     position: fixed;
     z-index: 3;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, .6);
@@ -10,7 +10,7 @@
     background-color: color($base-bg-color lightness(35%));
     transition: right .3s ease-out;
     
-    .mobile-nav--is-open & {
+    .mobile-nav--is-open & {        
         right: 0;        
     }
 
@@ -21,6 +21,11 @@
         padding-top: 0;
         position: relative;
         box-shadow: none;
+        transition: none;
+
+        .mobile-nav--is-open & {        
+            right: 0;        
+        }        
     }
 
     &__inner { 
@@ -31,6 +36,7 @@
             flex-direction: row;
             align-items: stretch;
             justify-content: flex-end;
+            height: 75px;            
         }
     }    
     .menu-icon {
@@ -46,20 +52,20 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: color($base-bg-color shade(20%));
+        background-color: color($base-bg-color lightness(40%));
         width: 100%;
         font-weight: 600;
-        color: $base-font-color-light;
+        color: color($base-font-color-light lightness(78%));
         padding: 20px 20px;
         transition: all .3s ease-out;
 
         &.active {
             color: white;
-            background-color: $main-base-color-dark;
+            background-color: color($base-bg-color lightness(37%));
         }
         &:hover {
-            color: color($base-font-color-light lightness(75%));
-            background-color: $main-base-color;
+            color: color($base-font-color-light lightness(78%));
+            background-color: color($base-bg-color lightness(43%));
         }
         &:active {
             color: white;
@@ -71,6 +77,7 @@
         background-color: $main-base-color;
 
         &__item {
+            color: $base-font-color-light;
             background-color: $main-base-color-darker; 
 
             &.active {
@@ -78,8 +85,8 @@
                 background-color: $main-base-color-dark;
             }
             &:hover {
-                color: color($base-font-color-light lightness(75%));
-                background-color: color($base-bg-color lightness(25%));
+                color: white;
+                background-color: $main-base-color-dark;
             }
             &:active {
                 color: white;
@@ -91,7 +98,7 @@
 .nav__trigger {
     position: fixed;
     display: none; 
-    top: 20px;   
+    top: 27px;   
     right: 20px;
     cursor: pointer;
     width: 35px;

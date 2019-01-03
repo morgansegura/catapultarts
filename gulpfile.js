@@ -11,13 +11,14 @@ var gulp = require('gulp'),
     pixelsToRem = require('postcss-pixels-to-rem'),
     googleColor = require('postcss-google-color'),
     cssnano = require('gulp-cssnano'),
-    cssOrder = require('css-declaration-sorter'),
+    cssDeclarationSorter = require('css-declaration-sorter'),
     cssNext = require('postcss-preset-env');
 
 gulp.task('styles', function () {
     return gulp.src('./src/assets/postcss/styles.css')
         .pipe(
             postcss([
+                // processor,
                 cssNext,
                 cssImport,
                 cssFor,                
@@ -26,12 +27,12 @@ gulp.task('styles', function () {
                 nested,
                 pixelsToRem,
                 googleColor,
-                colorFunctions,
-                cssOrder
+                colorFunctions
             ])
         )
-        .on('error', errorInfo)
-        .pipe(cssnano())
+        .on('error', errorInfo)          
+        .pipe(postcss([cssDeclarationSorter({ order: 'smacss' })])) 
+        .pipe(cssnano())     
         .pipe(gulp.dest('./src/assets/css'));
 });
 
@@ -43,6 +44,7 @@ gulp.task('watch', function () {
 
 gulp.task('cssInject', ['styles'], function () {
     return gulp.src('./src/assets/css/styles.css')
+        .pipe(postcss([cssDeclarationSorter({ order: 'smacss' })]))
         .pipe(cssnano())
 });
 

@@ -1,3 +1,6 @@
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+
 const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')

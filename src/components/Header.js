@@ -7,6 +7,7 @@ import Logo from './Accessories/Logo'
 class Header extends Component {    
 
     render() {
+        console.log(this.props)
         const menuStyle = 'desktop'
 
         return (
