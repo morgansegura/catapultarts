@@ -34,23 +34,31 @@ class TemplateWrapper extends Component {
 
   render() {
     const { children } = this.props;
-      //console.log(this.props)
-      return (  
+
+      return ( 
+        <> 
+        <Helmet>
+          <html lang="en" />
+          <title>{config.siteTitleAlt}</title>
+          <meta name="description" content={config.siteDescription} />
+          <meta name="u2f-support" content="true" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png" />
+          <link rel="manifest" href="/img/site.webmanifest" />
+          <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5" />
+          <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+          <meta name="msapplication-TileColor" content="#da532c" />
+          <meta name="theme-color" content="#ffffff" />
+
+          <meta property="og:type" content="business.business" />
+          <meta property="og:title" content={data.site.siteMetadata.title} />
+          <meta property="og:url" content="/" />
+          <meta property="og:image" content="/img/og-image.jpg" />
+
+          <script src="//code.iconify.design/1/1.0.0-rc1/iconify.min.js"></script>
+        </Helmet>        
         <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-open">
-          <Helmet>
-            <title>{config.siteTitleAlt}</title>
-            <meta name="description" content={config.siteDescription} />
-            <meta name="u2f-support" content="true" />
-            <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
-            <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png" />
-            <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png" />
-            <link rel="manifest" href="/img/site.webmanifest" />
-            <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5" />
-            <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
-            <meta name="msapplication-TileColor" content="#da532c" />
-            <meta name="theme-color" content="#ffffff" />
-            <script src="//code.iconify.design/1/1.0.0-rc1/iconify.min.js"></script>
-          </Helmet>
           <Header config={config} />
           <main className="main">
             {children}
@@ -58,6 +66,7 @@ class TemplateWrapper extends Component {
           <Footer />
           <ContactModal />
         </div>
+        </>
       );
     }
 }

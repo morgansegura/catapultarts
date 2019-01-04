@@ -11,64 +11,64 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-
     {
-      resolve: 'gatsby-source-wordpress',
+      // keep as first gatsby-source-filesystem plugin for gatsby image support
+      resolve: 'gatsby-source-filesystem',
       options: {
-        baseUrl: 'catapultarts.com/app',
-        hostingWPCOM: false,
-        protocol: 'https',
-        useACF: true,
-        auth: {
-          htaccess_user: process.env.WP_USERNAME,
-          htaccess_pass: process.env.WP_PASSWORD,
-          htaccess_sendImmediately: false,
-        },
-        perPage: 100,
-        // searchAndReplaceContentUrls: {
-        //   sourceUrl: "catapultarts.com/app",
-        //   replacementUrl: "catapultarts.netlify.com",
-        // },
-        concurrentRequests: 10,
-        includedRoutes: [
-          "/*/*/categories",
-          "/*/*/posts",
-          "/*/*/pages",
-          "/*/*/media",
-          "/*/*/tags",
-          "/*/*/taxonomies",
-          "/*/*/users",
-          "/*/*/acf",
-          "/*/*/menus",
-        ],
-        excludedRoutes: [],
-        normalizer: function ({ entities }) {
-          return entities
-        },
-        verboseOutput: true,
+        path: `${__dirname}/static/images`,
+        name: 'uploads',
       },
     },
-    // Add after these plugins if used
     {
-      resolve: `gatsby-plugin-purgecss`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        rejected: true,
-        printRejected: true, // Print removed selectors and processed file names
-        develop: true, // Enable while using `gatsby develop`
-        // tailwind: true, // Enable tailwindcss support
-        // whitelist: ['whitelist'], // Don't remove this selector
-        // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
-        // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
-      }
+        path: `${__dirname}/src/pages`,
+        name: 'pages',
+      },
     },
-    `gatsby-transformer-sharp`,
-     {
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/assets/images`,
+        name: 'images',
+      },
+    },
+    {
       resolve: `gatsby-plugin-sharp`,
       options: {
         useMozJpeg: true,
         stripMetadata: true,
       },
     },
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: 'gatsby-remark-relative-images',
+            options: {
+              name: 'uploads',
+            },
+          },
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 2048,
+            },
+          },
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: 'static',
+            }
+          }
+        ],
+      },
+    },    
     'gatsby-plugin-catch-links',
     'gatsby-plugin-twitter',
     {
@@ -103,6 +103,18 @@ module.exports = {
       }
     },
     'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        rejected: true,
+        printRejected: true, // Print removed selectors and processed file names
+        develop: true, // Enable while using `gatsby develop`
+        // tailwind: true, // Enable tailwindcss support
+        // whitelist: ['whitelist'], // Don't remove this selector
+        // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
+        // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
+      }
+    },    
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 }

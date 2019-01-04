@@ -1,11 +1,12 @@
 import React, { Component } from "react"
+import PropTypes from 'prop-types'
 import { Link, graphql } from "gatsby"
 import Layout from '../components/Layout'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 // import Hero from '../components/Hero'
 // import config from '../data/siteConfig'
 
-class Pages extends Component {
+class IndexPage extends Component {
 
   state = {
     // state
@@ -18,38 +19,13 @@ class Pages extends Component {
   render() {
     
     const { data } = this.props
-    const wp = data.wordpressPage
+    const { edges: posts } = data.allMarkdownRemark
 
     console.log(data)
 
     return (
       <Layout>
         <section className="section section__index">
-          {/*!!data.acf.hero_billboard_boolean 
-            && data.acf.hero_billboard_boolean === true ?
-            <Hero heroImage={data.acf.hero_billboard_boolean} node={data.acf.hero_billboard} />
-          : null }
-          
-          {!!data.hero_boolean
-            && data.acf.hero_boolean === true ?
-            data.acf.hero.map(({image}, i ) => (
-              <Hero key={i} heroCarousel={data.acf.hero_boolean} node={image} />
-            ))
-          : null 
-
-          <article data-aos="zoom-out-left" className="container">
-              <header className="py-40 conatiner container--md title__block">
-                <h1 className="title">
-                  Welcome to the {data.title} page of {config.siteTitle}                    
-                </h1>
-                <h2 className="subtitle">
-                  {data.title}
-                </h2>
-              </header>
-              <div dangerouslySetInnerHTML={{ __html: data.excerpt }} />
-              <div dangerouslySetInnerHTML={{ __html: data.content }} />
-          </article>
-          */}
           <div id="hero" className="hero container">
             <div>
             
@@ -162,72 +138,72 @@ class Pages extends Component {
             </div>       
           </div>       
         </section>
-
+        <section className="section">
+          <div className="container">
+            <div className="content">
+              <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
+            </div>
+            {posts
+              .map(({ node: post }) => (
+                <div
+                  className="content"
+                  style={{ border: '1px solid #333', padding: '2em 4em' }}
+                  key={post.id}
+                >
+                  <p>
+                    <Link className="has-text-primary" to={post.fields.slug}>
+                      {post.frontmatter.title}
+                    </Link>
+                    <span> &bull; </span>
+                    <small>{post.frontmatter.date}</small>
+                  </p>
+                  <p>
+                    {post.excerpt}
+                    <br />
+                    <br />
+                    <Link className="button is-small" to={post.fields.slug}>
+                      Keep Reading →
+                    </Link>
+                  </p>
+                </div>
+              ))}
+          </div>
+        </section>
       </Layout>
     )
   }
 }
 
-export default Pages
+export default IndexPage
 
-// Set here the ID of the home page.
+IndexPage.propTypes = {
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.array,
+    }),
+  }),
+}
+
 export const pageQuery = graphql`
-  query  {
-    wordpressPage(slug: { eq: "home"})  {
-      acf {
-        hero_boolean
-        hero {
-          image {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1920, maxHeight: 1270) {
-                  ...GatsbyImageSharpFluid
-                }
-              }                
-            }
+  query IndexQuery {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] },
+      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+    ) {
+      edges {
+        node {
+          excerpt(pruneLength: 400)
+          id
+          fields {
+            slug
           }
-
-          alt
-          title
-          caption
+          frontmatter {
+            title
+            templateKey
+            date(formatString: "MMMM DD, YYYY")
+          }
         }
-        hero_billboard_boolean
-        hero_billboard {
-          image {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1920, maxHeight: 1270) {
-                  ...GatsbyImageSharpFluid
-                }
-              }                
-           
-            }
-          }
-          link {
-            button {
-              title
-              text
-              url
-              target             
-            }
-            options
-            corners
-            color
-            bg_color
-            valign
-            halign            
-          }
-          alt
-          title
-          caption
-        }
-        # Flexible Random
       }
-      id
-      title
-      content
-      excerpt
-      slug        
     }
   }
 `
