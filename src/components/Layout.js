@@ -42,19 +42,19 @@ class TemplateWrapper extends Component {
           <title>{config.siteTitleAlt}</title>
           <meta name="description" content={config.siteDescription} />
           <meta name="u2f-support" content="true" />
-          <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png" />
-          <link rel="manifest" href="/img/site.webmanifest" />
-          <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5" />
-          <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+          <link rel="manifest" href="/images/site.webmanifest" />
+          <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5" />
+          <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
 
           <meta property="og:type" content="business.business" />
-          <meta property="og:title" content={data.site.siteMetadata.title} />
+            <meta property="og:title" content={config.siteTitleAlt} />
           <meta property="og:url" content="/" />
-          <meta property="og:image" content="/img/og-image.jpg" />
+          <meta property="og:image" content="/images/og-image.jpg" />
 
           <script src="//code.iconify.design/1/1.0.0-rc1/iconify.min.js"></script>
         </Helmet>        

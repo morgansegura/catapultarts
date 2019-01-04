@@ -1,10 +1,11 @@
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 const _ = require('lodash')
-const path = require('path')
+const Promise = require(`bluebird`)
+const path = require(`path`)
+const get = require('lodash/get')
 const { createFilePath } = require('gatsby-source-filesystem')
-const { paginate } = require('gatsby-awesome-pagination')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+// const { paginate } = require('gatsby-awesome-pagination')
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
@@ -75,8 +76,8 @@ exports.createPages = ({ actions, graphql }) => {
   })
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+exports.onCreateNode = ({ node, getNode }) => {
+  const { createNodeField } = getNode
   fmImagesToRelative(node) // convert image paths for gatsby images
 
   if (node.internal.type === `MarkdownRemark`) {
@@ -88,3 +89,66 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
   }
 }
+
+exports.createPages = ({ graphql, boundActionCreators }) => {
+  const { createPage } = boundActionCreators
+
+  return new Promise((resolve, reject) => {
+    const productPageTemplate = path.resolve('src/templates/ProductPage.js')
+    resolve(
+      graphql(
+        `
+          {
+            allMoltinProduct {
+              edges {
+                node {
+                  originalId
+                }
+              }
+            }
+          }
+        `
+      ).then(result => {
+        if (result.errors) {
+          console.log(result.errors)
+          reject(result.errors)
+        }
+
+        result.data.allMoltinProduct.edges.forEach(edge => {
+          createPage({
+            path: `/product/${edge.node.originalId}/`,
+            component: productPageTemplate,
+            context: {
+              originalId: edge.node.originalId,
+            },
+          })
+        })
+      })
+    )
+  })
+}
+
+exports.onCreateNode = async ({ node, boundActionCreators, cache, store }) => {
+  const { createNode } = boundActionCreators
+  let fileNode
+
+  if (node.internal && node.internal.type === `MoltinProduct`) {
+    const mainImageHref = get(node, 'includedData.main_image.link.href')
+
+    fileNode = await createFilePath({
+      url: mainImageHref,
+      store,
+      cache,
+      createNode,
+    })
+    if (fileNode && fileNode.id) node.mainImage___NODE = fileNode.id
+  }
+}
+
+// // exports.modifyWebpackConfig = ({ config }) => {
+// //   config.merge({
+// //     node: { fs: 'empty' },
+// //   })
+
+// //   return config
+// // }

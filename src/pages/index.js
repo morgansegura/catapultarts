@@ -1,7 +1,9 @@
 import React, { Component } from "react"
+import get from 'lodash/get'
 import PropTypes from 'prop-types'
 import { Link, graphql } from "gatsby"
 import Layout from '../components/Layout'
+import ProductList from '../components/ProductList'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 // import Hero from '../components/Hero'
 // import config from '../data/siteConfig'
@@ -20,6 +22,11 @@ class IndexPage extends Component {
     
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
+    const products = get(this, 'props.data.allMoltinProduct.edges')
+    const filterProductsWithoutImages = products.filter(
+      v => v.node.includedData.main_image
+    )
+
 
     console.log(data)
 
@@ -28,7 +35,7 @@ class IndexPage extends Component {
         <section className="section section__index">
           <div id="hero" className="hero container">
             <div>
-            
+              <ProductList products={filterProductsWithoutImages} />
             </div>
           </div>
         </section>
@@ -205,5 +212,40 @@ export const pageQuery = graphql`
         }
       }
     }
+    # allMoltinProduct {
+    #   edges {
+    #     node {
+    #       originalId
+    #       name
+    #       description
+    #       background_colour
+    #       new
+    #       meta {
+    #         display_price {
+    #           with_tax {
+    #             amount
+    #             currency
+    #             formatted
+    #           }
+    #         }
+    #       }
+    #       includedData {
+    #         main_image {
+    #           id
+    #           link {
+    #             href
+    #           }
+    #         }
+    #       }
+    #       mainImage {
+    #         childImageSharp {
+    #           sizes(maxWidth: 600) {
+    #             ...GatsbyImageSharpSizes
+    #           }
+    #         }
+    #       }
+    #     }
+    #   }
+    # }    
   }
 `

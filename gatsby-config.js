@@ -12,6 +12,15 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
+      resolve: 'gatsby-source-moltin',
+      options: {
+        key:
+          process.env.MOLTIN_CLIENT_ID ||
+          'j6hSilXRQfxKohTndUuVrErLcSJWP15P347L6Im0M4',
+        products: ['main_image', 'brands', 'files', 'categories'],
+      },
+    },    
+    {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -31,6 +40,21 @@ module.exports = {
       options: {
         path: `${__dirname}/src/assets/images`,
         name: 'images',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // trackingId: `ADD YOUR TRACKING ID HERE`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: `tomato`,
+        // Disable the loading spinner.
+        showSpinner: false,
       },
     },
     {
@@ -103,6 +127,12 @@ module.exports = {
       }
     },
     'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-plugin-netlify-cms',
+      options: {
+        modulePath: `${__dirname}/src/cms/cms.js`,
+      },
+    },    
     {
       resolve: `gatsby-plugin-purgecss`,
       options: {
