@@ -1,11 +1,12 @@
 /* eslint-disable */
-import React from 'react'
+import React, { Component } from 'react'
+import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
 import ProductSummary from '../components/ProductSummary'
 import ProductAttributes from '../components/ProductAttributes'
 
-class ProductPageTemplate extends React.PureComponent {
+class ProductPageTemplate extends Component {
     render() {
         const productInfo = get(this, 'props.data.allMoltinProduct')
         const data = productInfo.edges[0].node
@@ -68,13 +69,6 @@ export const pageQuery = graphql`
             }
           }
           slug
-          material
-          max_watt
-          bulb_qty
-          bulb
-          new
-          sku
-          finish
         }
       }
     }

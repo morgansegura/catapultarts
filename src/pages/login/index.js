@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { navigateTo } from 'gatsby-link'
 import {
     Header,
@@ -9,12 +9,11 @@ import {
     Message,
 } from 'semantic-ui-react'
 import Helmet from 'react-helmet'
-import AuthContext from '../components/Context/AuthContext'
-import { register } from '../../lib/moltin'
+import { login } from '../../../lib/moltin'
+import AuthContext from '../../components/Context/AuthContext'
 
-export default class Register extends React.Component {
+export default class Login extends Component {
     state = {
-        name: '',
         email: '',
         password: '',
         loading: false,
@@ -24,21 +23,22 @@ export default class Register extends React.Component {
     _handleSubmit = (e, context) => {
         e.preventDefault()
 
-        const { name, email, password } = this.state
+        const { email, password } = this.state
 
         this.setState({
             loading: true,
+            errors: null,
         })
-        register({ name, email, password })
-            .then(data => {
-                const { id, token } = data
+
+        login({ email, password })
+            .then(({ id, token }) => {
                 localStorage.setItem('customerToken', token)
                 localStorage.setItem('mcustomer', id)
                 context.updateToken()
                 navigateTo('/myaccount/')
             })
             .catch(e => {
-                console.log(e)
+                console.log(e.message)
                 this.setState({
                     loading: false,
                     errors: e.errors || e,
@@ -52,7 +52,11 @@ export default class Register extends React.Component {
     handleErrors = errors => {
         if (!Array.isArray(errors) && !errors.length > 0) {
             return (
-                <Message error header="Sorry" content="Cannot register at this time." />
+                <Message
+                    error
+                    header="Sorry"
+                    content="Please check your login details and try again."
+                />
             )
         }
         return errors.map((error, i) => (
@@ -67,8 +71,8 @@ export default class Register extends React.Component {
             <AuthContext.Consumer>
                 {context => (
                     <React.Fragment>
-                        <Helmet title="Register" />
-                        <Header as="h1">Create an account</Header>
+                        <Helmet title="Login" />
+                        <Header as="h1">Log in to your account</Header>
 
                         <Form
                             onSubmit={e => this._handleSubmit(e, context)}
@@ -78,26 +82,15 @@ export default class Register extends React.Component {
                             {errors ? this.handleErrors(errors) : null}
                             <Segment>
                                 <Form.Field>
-                                    <label htmlFor="name">Name</label>
-                                    <Input
-                                        id="name"
-                                        fluid
-                                        name="name"
-                                        autoFocus
-                                        required
-                                        onChange={e => this._handleChange(e)}
-                                    />
-                                </Form.Field>
-
-                                <Form.Field>
                                     <label htmlFor="email">Email</label>
                                     <Input
                                         id="email"
                                         fluid
                                         name="email"
                                         type="email"
-                                        required
+                                        autoFocus
                                         onChange={e => this._handleChange(e)}
+                                        required
                                     />
                                 </Form.Field>
 
@@ -114,8 +107,8 @@ export default class Register extends React.Component {
                                 </Form.Field>
 
                                 <Button type="submit" color="orange">
-                                    Register
-                </Button>
+                                    Login
+                                </Button>
                             </Segment>
                         </Form>
                     </React.Fragment>

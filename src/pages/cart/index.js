@@ -1,10 +1,10 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import CartItemList from '../components/CartItemList/'
-import CartSummary from '../components/CartSummary/'
-import CartContext from '../components/Context/CartContext'
+import CartItemList from '../../components/CartItemList'
+import CartSummary from '../../components/CartSummary'
+import CartContext from '../../components/Context/CartContext'
 
-const Moltin = require('../../lib/moltin')
+const Moltin = require('../../../lib/moltin')
 
 export default class Cart extends React.Component {
     state = {

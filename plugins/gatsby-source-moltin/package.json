@@ -9,7 +9,8 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "query-string": "^6.1.0",
-        "@moltin/sdk": "^3.10.0"
+        "@moltin/sdk": "^3.10.0",
+        "fs": "^0.0.1-security",
+        "query-string": "^6.1.0"
     }
 }

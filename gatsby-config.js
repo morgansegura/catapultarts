@@ -130,14 +130,17 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
+        manualInit: false,
+        enableIdentityWidget: true,
         modulePath: `${__dirname}/src/cms/cms.js`,
+        htmlTitle: `Content Manager`,
       },
     },    
     {
       resolve: `gatsby-plugin-purgecss`,
       options: {
         rejected: true,
-        printRejected: true, // Print removed selectors and processed file names
+        printRejected: false, // Print removed selectors and processed file names
         develop: true, // Enable while using `gatsby develop`
         // tailwind: true, // Enable tailwindcss support
         // whitelist: ['whitelist'], // Don't remove this selector

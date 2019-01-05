@@ -3,7 +3,8 @@ const _ = require('lodash')
 const Promise = require(`bluebird`)
 const path = require(`path`)
 const get = require('lodash/get')
-const { createFilePath } = require('gatsby-source-filesystem')
+const { createFilePath, createRemoteFileNode } = require('gatsby-source-filesystem')
+
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 // const { paginate } = require('gatsby-awesome-pagination')
 
@@ -28,6 +29,7 @@ exports.createPages = ({ actions, graphql }) => {
       }
     }
   `).then(result => {
+
     if (result.errors) {
       result.errors.forEach(e => console.error(e.toString()))
       return Promise.reject(result.errors)
@@ -73,82 +75,80 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
+  }).then(() => { 
+    const productPageTemplate = path.resolve('src/templates/ProductPage.js')
+    return graphql(
+      `
+            {
+              allMoltinProduct {
+                edges {
+                  node {
+                    originalId
+                  }
+                }
+              }
+            }
+          `
+    ).then(result => {
+      if (result.errors) {
+        console.log(result.errors)
+        reject(result.errors)
+      }
+
+      result.data.allMoltinProduct.edges.forEach(edge => {
+        createPage({
+          path: `/product/${edge.node.originalId}/`,
+          component: productPageTemplate,
+          context: {
+            originalId: edge.node.originalId,
+          },
+        })
+      })
+    })      
   })
 }
 
-exports.onCreateNode = ({ node, getNode }) => {
-  const { createNodeField } = getNode
+exports.onCreateNode = async ({ node, actions, getNode, cache, store, createNodeId }) => {
+  const { createNodeField, createNode } = actions
+  // console.log(createNodeId)
+  let fileNode
+
   fmImagesToRelative(node) // convert image paths for gatsby images
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
+    
     createNodeField({
       name: `slug`,
       node,
       value,
     })
   }
-}
-
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
-
-  return new Promise((resolve, reject) => {
-    const productPageTemplate = path.resolve('src/templates/ProductPage.js')
-    resolve(
-      graphql(
-        `
-          {
-            allMoltinProduct {
-              edges {
-                node {
-                  originalId
-                }
-              }
-            }
-          }
-        `
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
-        }
-
-        result.data.allMoltinProduct.edges.forEach(edge => {
-          createPage({
-            path: `/product/${edge.node.originalId}/`,
-            component: productPageTemplate,
-            context: {
-              originalId: edge.node.originalId,
-            },
-          })
-        })
-      })
-    )
-  })
-}
-
-exports.onCreateNode = async ({ node, boundActionCreators, cache, store }) => {
-  const { createNode } = boundActionCreators
-  let fileNode
-
+  
   if (node.internal && node.internal.type === `MoltinProduct`) {
-    const mainImageHref = get(node, 'includedData.main_image.link.href')
+    
+    const mainImageHref = get(node, 'includedData.main_image.link.href')    
 
-    fileNode = await createFilePath({
+    fileNode = await createRemoteFileNode({
       url: mainImageHref,
       store,
       cache,
       createNode,
+      createNodeId
     })
+
+    console.log('After Filenode') 
     if (fileNode && fileNode.id) node.mainImage___NODE = fileNode.id
+    console.log('Aftermath') 
   }
 }
 
-// // exports.modifyWebpackConfig = ({ config }) => {
-// //   config.merge({
-// //     node: { fs: 'empty' },
-// //   })
+exports.onCreateWebpackConfig = ({
+  stage, getConfig, rules, loaders, actions
+}) => {
+  actions.setWebpackConfig({
 
-// //   return config
-// // }
+      node: { fs: 'empty' },
+
+  });
+}
