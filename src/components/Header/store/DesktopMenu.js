@@ -6,18 +6,18 @@ import Logo from './Logo'
 
 class DesktopMenu extends Component {
   state = {
-    activeItem: this.props.location.pathname,
+    // activeItem: this.props.location.pathname,
   }
 
   componentWillReceiveProps(nextProps) {
-    const nextPathname = nextProps.location.pathname
-    const currentPathname = this.props.location.pathname
+    // const nextPathname = nextProps.location.pathname
+    // const currentPathname = this.props.location.pathname
 
-    if (nextPathname !== currentPathname) {
-      this.setState({
-        activeItem: nextPathname,
-      })
-    }
+    // if (nextPathname !== currentPathname) {
+    //   this.setState({
+    //     // activeItem: nextPathname,
+    //   })
+    // }
   }
 
   render() {
@@ -27,7 +27,7 @@ class DesktopMenu extends Component {
       <Menu size="huge" borderless pointing>
         <Container text>
           <Menu.Item
-            active={activeItem === withPrefix('/')}
+            activeClassName="active"
             as={Link}
             to="/"
             header
@@ -48,7 +48,7 @@ class DesktopMenu extends Component {
               <Menu.Item
                 as={Link}
                 to="/cart/"
-                active={activeItem === withPrefix('/cart/')}
+                activeClassName="active"
               >
                 <ShoppingCartIcon cartCount={cartCount} name="Cart" />
               </Menu.Item>
@@ -58,21 +58,21 @@ class DesktopMenu extends Component {
               <Menu.Item
                 as={Link}
                 to="/register/"
-                active={activeItem === withPrefix('/register/')}
+                activeClassName="active"
               >
                 Sign up
               </Menu.Item>
               <Menu.Item
                 as={Link}
                 to="/login/"
-                active={activeItem === withPrefix('/login/')}
+                activeClassName="active"
               >
                 Sign in
               </Menu.Item>
               <Menu.Item
                 as={Link}
                 to="/cart/"
-                active={activeItem === withPrefix('/cart/')}
+                activeClassName="active"
               >
                 <ShoppingCartIcon cartCount={cartCount} name="Cart" />
               </Menu.Item>

@@ -70,18 +70,18 @@ const StyledDivider = styled(Divider)`
 class MobileMenu extends Component {
   state = {
     open: false,
-    activeItem: this.props.location.pathname,
+    // activeItem: this.props.location.pathname,
   }
 
   componentWillReceiveProps(nextProps) {
-    const nextPathname = nextProps.location.pathname
-    const currentPathname = this.props.location.pathname
+    // const nextPathname = nextProps.location.pathname
+    // const currentPathname = this.props.location.pathname
 
-    if (nextPathname !== currentPathname) {
-      this.setState({
-        activeItem: nextPathname,
-      })
-    }
+    // if (nextPathname !== currentPathname) {
+    //   this.setState({
+    //     activeItem: nextPathname,
+    //   })
+    // }
   }
 
   handleClick = () => this.setState({ open: !this.state.open })
@@ -99,7 +99,7 @@ class MobileMenu extends Component {
             as={Link}
             to="/"
             header
-            active={activeItem === withPrefix('/')}
+            activeClassName="active"
           >
             <Logo />
             Store
@@ -108,7 +108,7 @@ class MobileMenu extends Component {
             <Menu.Item
               as={Link}
               to="/cart/"
-              active={activeItem === withPrefix('/cart/')}
+              activeClassName="active"
             >
               <ShoppingCartIcon cartCount={cartCount} name="" />
             </Menu.Item>
