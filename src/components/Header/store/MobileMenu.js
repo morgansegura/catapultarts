@@ -10,7 +10,7 @@ import {
   Button,
 } from 'semantic-ui-react'
 import styled from 'styled-components'
-import ShoppingCartIcon from './ShoppingCartIcon'
+import ShoppingCartIcon from '../ShoppingCartIcon'
 import Logo from './Logo'
 
 const StyledLink = styled(Link)`

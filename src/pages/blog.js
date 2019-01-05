@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import get from 'lodash/get'
 import PropTypes from 'prop-types'
 import { Link, graphql } from "gatsby"
-import Layout from '../components/Layout'
+import Layout from '../layouts/BlogLayout'
 
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 // import Hero from '../components/Hero'

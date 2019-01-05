@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'gatsby';
-import Navbar from './Navbar'
-import Logo from './Accessories/Logo'
+import Navbar from '../../Navbar'
+import Logo from '../../Accessories/Logo'
 
 
 class Header extends Component {    

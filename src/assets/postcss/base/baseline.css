@@ -7,7 +7,7 @@ body {
     padding: 0;
     margin: 0;
     background-color: $base-bg-color;    
-    font-family: $base-font-family;
+    /* font-family: $base-font-family; */
     color: $base-font-color;
     font-weight: $base-font-weight;
     font-size: $base-font-size;

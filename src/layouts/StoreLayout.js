@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Container } from 'semantic-ui-react'
 import Headroom from 'react-headroom'
 import Helmet from 'react-helmet'
 import { withPrefix } from 'gatsby-link'
-import 'semantic-ui-css/semantic.min.css'
 import AuthProvider from '../components/Context/AuthProvider'
 import CartProvider from '../components/Context/CartProvider'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Header from '../components/Header/store'
+import Footer from '../components/Footer/store'
 
-class Layout extends React.PureComponent {
+class StoreLayout extends Component {
     render() {
         const { location, children } = this.props
+        console.log(children)
 
         return (
             <AuthProvider>
@@ -53,7 +53,7 @@ class Layout extends React.PureComponent {
                     >
                         <Header location={location} />
                     </Headroom>
-                    <Container text>{children()}</Container>
+                    <Container text>{children}</Container>
                     <Footer />
                 </CartProvider>
             </AuthProvider>
@@ -61,4 +61,4 @@ class Layout extends React.PureComponent {
     }
 }
 
-export default Layout
+export default StoreLayout

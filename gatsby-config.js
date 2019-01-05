@@ -45,7 +45,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        // trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-131102503-1`,
       },
     },
     {
@@ -108,7 +108,7 @@ module.exports = {
         name: "Catapult Arts",
         short_name: "catapult arts",
         description: "web design, web development, social media marketing, search engine optimizaion, search engine marketing",
-        start_url: "catapultarts.com",
+        start_url: "https://www.catapultarts.com",
         background_color: "#efefef",
         theme_color: "red",
         display: 'minimal-ui',

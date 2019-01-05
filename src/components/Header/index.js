@@ -1,39 +1,32 @@
-import React from 'react'
-import { Responsive } from 'semantic-ui-react'
-import DesktopMenu from './DesktopMenu'
-import MobileMenu from './MobileMenu'
-import AuthContext from '../Context/AuthContext'
-import CartContext from '../Context/CartContext'
+import React, { Component } from 'react';
+import { Link } from 'gatsby';
+import Navbar from '../Navbar'
+import Logo from '../Accessories/Logo'
 
-class Header extends React.PureComponent {
-  render() {
-    return (
-      <AuthContext.Consumer>
-        {auth => (
-          <CartContext.Consumer>
-            {cart => (
-              <React.Fragment>
-                <Responsive maxWidth={Responsive.onlyMobile.maxWidth}>
-                  <MobileMenu
-                    location={this.props.location}
-                    token={auth.token}
-                    cartCount={cart.cartCount}
-                  />
-                </Responsive>
-                <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-                  <DesktopMenu
-                    location={this.props.location}
-                    token={auth.token}
-                    cartCount={cart.cartCount}
-                  />
-                </Responsive>
-              </React.Fragment>
-            )}
-          </CartContext.Consumer>
-        )}
-      </AuthContext.Consumer>
-    )
-  }
+
+class Header extends Component {    
+
+    render() {
+        console.log(this.props)
+        const menuStyle = 'desktop'
+
+        return (
+            <header className="header__main">
+                <div className="container">
+                    <div className="header__main__inner">
+                        <Link className="logo" to="/" title="">
+                            {!!Logo ?
+                                <Logo classList={`logo__header logo--cta`} />
+                                :
+                                <h2 className="title">{this.props.siteTitle}</h2>
+                            }
+                        </Link>
+                        <Navbar menuStyle={menuStyle} />
+                    </div>
+                </div>
+            </header>
+        );
+    }
 }
 
-export default Header
+export default Header;

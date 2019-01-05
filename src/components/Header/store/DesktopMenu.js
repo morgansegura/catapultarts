@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Link, { withPrefix } from 'gatsby-link'
 import { Menu, Container, Icon } from 'semantic-ui-react'
-import ShoppingCartIcon from './ShoppingCartIcon'
+import ShoppingCartIcon from '../ShoppingCartIcon'
 import Logo from './Logo'
 
 class DesktopMenu extends Component {

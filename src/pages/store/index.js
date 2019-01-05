@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import get from 'lodash/get'
 // import PropTypes from 'prop-types'
 import { Link, graphql } from "gatsby"
-import Layout from '../../components/Layout'
+import StoreLayout from '../../layouts/StoreLayout'
 import ProductList from '../../components/ProductList'
 // import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 // import Hero from '../components/Hero'
@@ -30,7 +30,7 @@ class StorePage extends Component {
         console.log(data)
 
         return (
-            <Layout>
+            <StoreLayout>
                 <section className="section section__store">
                     <div id="hero" className="store">
                         <div>
@@ -38,7 +38,7 @@ class StorePage extends Component {
                         </div>
                     </div>
                 </section>
-            </Layout>
+            </StoreLayout>
         )
     }
 }

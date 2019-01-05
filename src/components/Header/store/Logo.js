@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image } from 'semantic-ui-react'
 
-import moltin from '../../images/moltin-light-hex.svg.svg'
+import moltin from '../../../assets/images/moltin-light-hex.svg'
 
 const Logo = () => (
   <Image
