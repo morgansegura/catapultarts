@@ -58,7 +58,7 @@ class TemplateWrapper extends Component {
 
           <script src="//code.iconify.design/1/1.0.0-rc1/iconify.min.js"></script>
         </Helmet>        
-        <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-open">
+        <div id="wrapper" className="wrapper is--mobile-nav">
           <Header config={config} />
           <main className="main">
             {children}

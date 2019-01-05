@@ -11,9 +11,9 @@ class Header extends Component {
         const menuStyle = 'desktop'
 
         return (
-            <header className="header">
+            <header className="header__main">
                 <div className="container">
-                    <div className="header__inner">
+                    <div className="header__main__inner">
                         <Link className="logo" to="/" title="">
                             {!!Logo ?
                                 <Logo classList={`logo__header logo--cta`} />

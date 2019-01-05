@@ -24,10 +24,8 @@ body {
     z-index: 1;
     height: 100vh;
     transition: $base-transition;
+    padding-top: 75px;
 
-    &.is--mobile-nav {
-        
-    }
     &.mobile-nav--is-open  {
         &::before {
             content: "";
@@ -48,6 +46,10 @@ body {
                 transition: none;
             }
         }        
+    }
+
+    @mixin atMedium {
+        padding-top: 0;
     }
 }
 

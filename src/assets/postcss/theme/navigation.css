@@ -8,10 +8,10 @@
     top: 0;
     right: -300px;
     background-color: color($base-bg-color lightness(35%));
-    transition: right .3s ease-out;
     
-    .mobile-nav--is-open & {        
-        right: 0;        
+    .mobile-nav--is-open & { 
+        right: 0;
+        transition: all .3s ease-out;        
     }
 
     @mixin atMedium {
@@ -23,7 +23,7 @@
         box-shadow: none;
         transition: none;
 
-        .mobile-nav--is-open & {        
+        .mobile-nav--is-open & { 
             right: 0;        
         }        
     }
@@ -31,23 +31,29 @@
     &__inner { 
         display: flex;
         flex-direction: column;
+        opacity: 0;
+        visibility: hidden;        
+
+        .mobile-nav--is-open & {  
+            opacity: 1;
+            visibility: visible;
+        }   
 
         @mixin atMedium {
             flex-direction: row;
             align-items: stretch;
             justify-content: flex-end;
-            height: 75px;            
+            height: 75px; 
+            opacity: 1;
+            visibility: visible;            
+
+            .mobile-nav--is-open & {  
+                opacity: 0;
+                visibility: hidden; 
+            }                          
         }
     }    
-    .menu-icon {
-        color: google-color(grey, 700);
-        font-size: 36px;
-        transition: all .3s ease-out;
 
-        &:hover {
-            color: white;
-        }
-    }
     &__item {
         display: flex;
         align-items: center;

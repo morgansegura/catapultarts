@@ -1,10 +1,10 @@
 .morgan-was-here {}
 
-.header {
+.header__main {
     position: relative;
     margin: 0 auto;
     padding: 0;
-    position: sticky;
+    position: fixed;
     top: 0;
     overflow: visible;
     z-index: 101;
@@ -41,6 +41,8 @@
         &__image {
             -webkit-mask: url(../images/logo.svg) no-repeat 50% 0px;
             mask: url(../images/logo.svg) no-repeat 50% 0px;
+            position: relative;
+            top: 10px;
             /* background-size: 50%; */
 
             span {
@@ -52,6 +54,7 @@
 
             @mixin atMedium {
                 margin: 0;
+                top: auto;
             }
         }
         &--white {
@@ -75,6 +78,7 @@
 
     @mixin atMedium {
         background: linear-gradient(to right, $main-base-color 50%, $main-base-color-darker 50%);
+        position: sticky;
 
         .logo {
             flex-basis: 50%;

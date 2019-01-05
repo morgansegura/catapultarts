@@ -25,10 +25,22 @@ const Navbar = (props) => {
             to="/blog">
             Blog
           </Link>      
-          <div className="nav__trigger" onClick={openMobileNav}>
-            <div className="nav__trigger--inner"></div>
-          </div>
+          <Link 
+            activeClassName="active" 
+            className="nav__item" 
+            to="/about">
+            About
+          </Link>
+          <Link
+            activeClassName="active"
+            className="nav__item"
+            to="/store">
+            Store
+          </Link>
         </div>
+        <div className="nav__trigger" onClick={openMobileNav}>
+          <div className="nav__trigger--inner"></div>
+        </div>        
       </nav>
   );
 };
