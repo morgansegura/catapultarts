@@ -20,27 +20,22 @@ class IndexPage extends Component {
 
     return (
       <Layout>
-        <div className="container">
-          <h1 className="h1 t-center b9">
-            H1 .h1.b9
-          </h1>
-          <p>{`class="<h1 class="h1 b9 t-center">H1</h1>"`}</p>
-          <h2 className="h2 t-center b7">
-            H2 .h2.b7
-          </h2>
-          <h3 className="h3 t-center b6">
-            H3 .h3.b6
-          </h3>
-          <h4 className="h4 t-center b5">
-            H4 .b4.b5
-          </h4>
-          <h5 className="h5 t-center b4">
-            H5
-          </h5>
-          <h6 className="h5 t-center b3">
-            H6
-          </h6>
-        </div>
+        <section className="buffer--y-lg">
+          <div className="container">
+            <div className="row">
+              <div className="col-12 col-md-6">
+                <small className="b6 uppercase color--cta">Create something</small>
+                <h1 className="h1">Best design practices in one book</h1>
+                <p className="mb-30">
+                  A free resource that will help you understandthe design process and improve the quality of your work
+                </p>
+              </div>
+              <div className="col-12 col-md-6">
+              
+              </div>
+            </div>
+          </div>
+        </section>
       </Layout>
     )
   }

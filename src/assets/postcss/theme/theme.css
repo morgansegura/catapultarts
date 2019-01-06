@@ -10,3 +10,14 @@
         color: white;
     }
 }
+
+.bg {
+    &--grey50 {
+        background-color: google-color(grey, 50);
+    }
+}
+.color {
+    &--cta {
+        color: $cta;
+    }
+}

@@ -1,17 +1,24 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
+import ContactModal from '../components/Forms/ContactForm'
 
 const Navbar = (props) => {
 
-  const openMobileNav = () => {
+  const toggleMobileNav = () => {
     const wrapper = document.getElementById("wrapper");
-    wrapper.classList.toggle("mobile-nav--is-open");
+
+    // toggle open/closed calsses for transition effects
+    const superToggle = (element, class0, class1) => {
+      element.classList.toggle(class0);
+      element.classList.toggle(class1);
+    }
+
+    superToggle(wrapper, 'mobile-nav--is-open', 'mobile-nav--is-closed')
   }
 
   return (
 
       <nav className="nav nav__main">
-      {console.log("Navbar") }
         <div className="nav__inner">
           <Link 
             activeClassName="active" 
@@ -36,9 +43,10 @@ const Navbar = (props) => {
             className="nav__item"
             to="/store">
             Store
-          </Link>
+          </Link>        
+          <ContactModal />          
         </div>
-        <div className="nav__trigger" onClick={openMobileNav}>
+        <div className="nav__trigger" onClick={toggleMobileNav}>
           <div className="nav__trigger--inner"></div>
         </div>        
       </nav>

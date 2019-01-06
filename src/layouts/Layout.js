@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import ContactModal from '../components/Forms/ContactForm'
 import config from '../data/siteConfig'
 import AOS from 'aos'
 
@@ -28,6 +27,7 @@ class TemplateWrapper extends Component {
       this.state.userHasScrolled = true
       console.log('scrolling')
     }
+
     // AOS
     AOS.init()
   }
@@ -58,13 +58,12 @@ class TemplateWrapper extends Component {
 
           <script src="//code.iconify.design/1/1.0.0-rc1/iconify.min.js"></script>
         </Helmet>        
-        <div id="wrapper" className="wrapper is--mobile-nav">
+          <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-closed">
           <Header config={config} />
           <main className="main">
             {children}
           </main>
           <Footer />
-          <ContactModal />
         </div>
         </>
       );
