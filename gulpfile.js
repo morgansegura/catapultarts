@@ -35,15 +35,45 @@ gulp.task('styles', function () {
         .pipe(cssnano())     
         .pipe(gulp.dest('./src/assets/css'));
 });
+gulp.task('styles', function () {
+    return gulp.src('./src/admin/postcss/cms.css')
+        .pipe(
+            postcss([
+                // processor,
+                cssNext,
+                cssImport,
+                cssFor,                
+                cssvars,
+                mixins,
+                nested,
+                pixelsToRem,
+                googleColor,
+                colorFunctions
+            ])
+        )
+        .on('error', errorInfo)    
+        .pipe(postcss([cssDeclarationSorter({ order: 'smacss' })])) 
+        .pipe(cssnano())     
+        .pipe(gulp.dest('./static/admin'));
+});
 
 gulp.task('watch', function () {
     gulp.watch('./src/assets/postcss/**/*.css', function () {
         gulp.start('cssInject');
     });
+    gulp.watch('./src/admin/postcss/**/*.css', function () {
+        gulp.start('admincssInject');
+    });    
 });
 
 gulp.task('cssInject', ['styles'], function () {
     return gulp.src('./src/assets/css/styles.css')
+        .pipe(postcss([cssDeclarationSorter({ order: 'smacss' })]))
+        .pipe(cssnano())
+});
+
+gulp.task('admincssInject', ['styles'], function () {
+    return gulp.src('./static/admin/cms.css')
         .pipe(postcss([cssDeclarationSorter({ order: 'smacss' })]))
         .pipe(cssnano())
 });

@@ -20,7 +20,9 @@ class TemplateWrapper extends Component {
   state = {
     userHasScrolled: false,
     isMobileNav: false,
-    mobileNavIsOpen: false
+    mobileNavIsOpen: false,
+    // footerData = null, 
+    // navbarData = null
   }
 
   componentDidMount() {
@@ -73,15 +75,60 @@ class TemplateWrapper extends Component {
           <script src="//code.iconify.design/1/1.0.0-rc1/iconify.min.js"></script>
         </Helmet>        
           <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-closed">
-          <Header config={config} />
+          <Header data={footerData} config={config} />
           <main className="main">
             {children}
           </main>
-          <Footer />
+          <Footer data={footerData} />
         </div>
         </>
       );
     }
 }
 
+
+export const query = graphql`
+  fragment LayoutFragment on Query {
+    footerData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "footer" } } }) {
+      edges {
+        node {
+          id
+          frontmatter {
+            logoImage {
+              image
+              imageAlt
+              tagline
+            }
+            socialLinks {
+              image
+              imageAlt
+              label
+              linkURL
+            }
+          }
+        }
+      }
+    }
+    navbarData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "navbar" } } }) {
+      edges {
+        node {
+          id
+          frontmatter {
+            logoImage {
+              image
+              imageAlt
+            }
+            menuItems {
+              label
+              linkType
+              linkURL
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 export default TemplateWrapper
+

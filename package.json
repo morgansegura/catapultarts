@@ -76,7 +76,7 @@
     "start": "gatsby serve",
     "clean": "rimraf .cache public",
     "develop": "concurrently \"rimraf .cache public localStorage\" \"gulp watch\" \"npm run clean\" \"gatsby develop\"",
-    "build": "concurrently \"rimraf .cache public localStorage\" \"gulp cssInject\" \"npm run clean\" \"gatsby build\"",
+    "build": "concurrently \"rimraf .cache public localStorage\" \"gulp cssInject\" \"gulp admincssInject\" \"npm run clean\" \"gatsby build\"",
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
