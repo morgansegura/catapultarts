@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link, StaticQuery, graphql } from 'gatsby'
-import ContactModal from '../components/Forms/ContactForm'
+import { Link } from 'gatsby'
+// import ContactModal from '../components/Forms/ContactForm'
 
 const Navbar = (props) => {
 
@@ -14,6 +14,7 @@ const Navbar = (props) => {
     }
 
     superToggle(wrapper, 'mobile-nav--is-open', 'mobile-nav--is-closed')
+    console.log(props.location)
   }
 
   return (
@@ -44,7 +45,13 @@ const Navbar = (props) => {
             to="/store">
             Store
           </Link>        
-          <ContactModal />          
+          <Link
+            activeClassName="active"
+            className="nav__item"
+            to="/contact">
+            Contact
+          </Link>        
+       
         </div>
         <div className="nav__trigger" onClick={toggleMobileNav}>
           <div className="nav__trigger--inner"></div>

@@ -9,7 +9,16 @@
     overflow: visible;
     z-index: 4;
     width: 100%;
-    background: linear-gradient(to right, $main-base-color 50%, $main-base-color  50%);
+    /* background: linear-gradient(to right, $main-base-color 50%, $main-base-color  50%); */
+
+    &.fill {
+        background: color(white a(1));
+        transition: background .3s ease-out;
+    }
+    &.unfill {
+        background: color(white a(0));
+        transition: background .3s ease-out;
+    }
 
     .mobile-nav--is-open & {
         &::before {
@@ -44,7 +53,6 @@
         }        
     }
 
-
     &__inner {
         position: relative;
         display: flex;
@@ -66,7 +74,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        /* background-color: red; */
+        margin-bottom: 0;
 
         &__header {
             width: 40px;
@@ -104,15 +112,25 @@
             background-color: white;
         }
         & .title {
-            font-family: $cursive;
-            font-weight: 300;
-            font-size: 40px;
+            font-family: $sans-secondary;
+            font-weight: 500;
+            /* color: white; */
+            font-size: 20px;
+            margin-bottom: 0;
+        }
+        .mobile-nav--is-open & {
+            opacity: .2;
+        }
+        @mixin atMedium {
+            .mobile-nav--is-open & {
+                opacity: 1;
+            }            
         }
     }
 
     @mixin atMedium {
-        background: linear-gradient(to right, $main-base-color 50%, $main-base-color-darker 50%);
-        position: sticky;
+        /* background: linear-gradient(to right, $main-base-color 50%, $main-base-color-darker 50%); */
+        /* position: sticky; */
 
         .logo {
             flex-basis: 50%;

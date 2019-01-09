@@ -126,13 +126,15 @@ module.exports = {
         ]
       }
     },
-    'gatsby-plugin-offline',
+    // 'gatsby-plugin-offline',
+    // `gatsby-plugin-netlify-cache`,
+    // `gatsby-plugin-remove-serviceworker`,
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
         manualInit: false,
         enableIdentityWidget: true,
-        modulePath: `${__dirname}/src/cms/cms.js`,
+        modulePath: `${__dirname}/src/admin/cms.js`,
         htmlTitle: `Content Manager`,
       },
     },    

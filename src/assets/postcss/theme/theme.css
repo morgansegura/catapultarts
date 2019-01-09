@@ -12,12 +12,94 @@
 }
 
 .bg {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    /* height: 100%; */
+    z-index: 1;
+
     &--grey50 {
         background-color: google-color(grey, 50);
     }
+    &--peach-gold-rtl-45 {
+        position: relative;
+        z-index: -1;
+        background: linear-gradient(45deg, #F9807B, #FBCA71);
+    }
+
+
+    &--round-box:before {
+        content: "";
+        position: absolute;        
+        background: hsla(9,100%,75%,.1);
+        border-radius: 6.25rem;
+        transform: translate(75%,30%) skewX(10deg) skewY(0) scaleY(1) scaleX(1.04) rotate(60deg);
+        width: 50%;
+        height: 50%;
+        z-index: -1;
+    }    
+    &--round-box:after {
+        content: "";
+        position: absolute;  
+        background: rgba(29,233,182,.1);
+        border-radius: 6.25rem;
+        transform: translate(100%, 0%) skewX(10deg) skewY(0) scaleY(1) scaleX(1.04) rotate(30deg);
+        width: 50%;
+        height: 200%;
+        z-index: -1;
+    }    
 }
 .color {
     &--cta {
         color: $cta;
     }
+    &--grey300 {
+        color: google-color(gre, 300);
+    }
+
+    /* Google-colors */
+    &--red {
+        &50 {    
+            color: google-color(red, 50);
+        }          
+        &a100 {    
+            color: google-color(red, a100);
+        }          
+        &a200 {    
+            color: google-color(red, a200);
+        }          
+        &a400 {    
+            color: google-color(red, a400);
+        }          
+        &a700 {    
+            color: google-color(red, a700);
+        }          
+        @for $c from 100 to 900 by 100 {          
+            &$(c) {    
+                color: google-color(red, $c);
+            }
+        }      
+    }
+
+    &--grey {
+        &50 {    
+            color: google-color(grey, );
+        }       
+        @for $c from 100 to 900 by 100 {          
+            &$(c) {    
+                color: google-color(grey, $c);
+            }
+        }      
+    }
+    &--brown {
+        &50 {    
+            color: google-color(brown, );
+        }       
+        @for $c from 100 to 900 by 100 {          
+            &$(c) {    
+                color: google-color(brown, $c);
+            }
+        }      
+    }
+
 }

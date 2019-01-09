@@ -68,6 +68,32 @@
     font-size: 20px;
 }
 
+.hr {
+    display: flex;
+    align-items: center;    
+    height: 10px;
+
+    &::before {
+        content: "";
+        width: 100%;
+        height: 1px;
+        border-radius: 30px;
+        background-color: $main-black;
+    }
+    &--light {
+        &::before {
+            background-color: google-color(grey, 400);
+        }        
+    }
+    @for $h from 1 to 60 {
+        &-$(h) {
+            &::before {            
+                height: $(h)px;
+            }
+        }
+    }
+}
+
 .h1, .h2, .h3, 
 .h4, .h5, .h6,
 p {

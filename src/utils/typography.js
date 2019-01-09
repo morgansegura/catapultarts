@@ -2,20 +2,19 @@ import Typography from 'typography'
 
 const typography = new Typography({
     baseFontSize: '16px',
-    baseLineHeight: 1.69,
-    headerFontFamily: ['Hind','Source Sans Pro', 'Helvetica Neue', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
-    bodyFontFamily: ['Source Sans Pro', 'sans-serif'],
+    baseLineHeight: 1.7,
+    headerFontFamily: ['Hind', 'Helvetica Neue', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
+    bodyFontFamily: ['Rubik', 'Helvetica Neue', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
     // See below for the full list of options.
 
     googleFonts: [
         {
-            name: 'Source+Sans+Pro',
+            name: 'Rubik',
             styles: [
                 '300',
                 '400',
-                '600',
+                '500',
                 '700',
-                '900',
             ],
         },
         {

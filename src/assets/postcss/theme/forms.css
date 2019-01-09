@@ -13,7 +13,7 @@ select {
     transition: $base-transition;
     border: 1px solid google-color(grey, 300);
     background-color: google-color(grey, 100);
-    padding: 15px;
+    padding: 8px;
     border-radius: 3px;
     margin-bottom: .25rem;
 

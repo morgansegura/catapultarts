@@ -11,14 +11,14 @@ class Header extends Component {
         const menuStyle = 'desktop'
 
         return (
-            <header className="header__main">
+            <header id="headerMain" className="header__main">
                 <div className="container">
                     <div className="header__main__inner">
                         <Link className="logo" to="/" title="">
-                            {!!Logo ?
-                                <Logo classList={`logo__header logo--cta`} />
+                            {!Logo ?
+                                <Logo classList={`logo__header logo--black`} />
                                 :
-                                <h2 className="title">{this.props.siteTitle}</h2>
+                                <h2 className="title">{this.props.config.siteTitle}</h2>
                             }
                         </Link>
                         <Navbar menuStyle={menuStyle} />

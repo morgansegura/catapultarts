@@ -38,7 +38,7 @@
 
 /* Margin adjustments */
 .p {
-  @for $p from 0 to 90 by 5 {
+  @for $p from 0 to 200 by 5 {
     &t-$(p) {
       padding-top: $(p)px;      
     }
@@ -63,10 +63,10 @@
 }
 /* Margin adjustments */
 .m {
-  @for $m from 0 to 90 by 5 {
+  @for $m from 0 to 200 by 5 {
     &t-$(m) {
       margin-top: $(m)px;      
-    }
+    }    
     &b-$(m) {
       margin-bottom: $(m)px;      
     }
@@ -83,6 +83,29 @@
     &y-$(m) {
       margin-top: $(m)px;
       margin-bottom: $(m)px;
+    }
+
+    /* Negatives */
+
+    &t-minus-$(m) {
+      margin-top: -$(m)px;      
+    }    
+    &b-minus-$(m) {
+      margin-bottom: -$(m)px;      
+    }
+    &l-minus-$(m) {
+      margin-left: -$(m)px;      
+    }
+    &r-minus-$(m) {
+      margin-right: -$(m)px;      
+    }
+    &x-minus-$(m) {
+      margin-left: -$(m)px;
+      margin-right: -$(m)px;
+    }
+    &y-minus-$(m) {
+      margin-top: -$(m)px;
+      margin-bottom: -$(m)px;
     }
   }
 }
@@ -293,4 +316,14 @@
 
 .mission {
   
+}
+
+.fixed-header {
+  /* position: relative; */
+  padding-top: 75px;
+}
+.vh {
+  &--half {
+    height: 50vh;
+  }
 }

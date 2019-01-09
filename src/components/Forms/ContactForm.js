@@ -43,7 +43,7 @@ class ContactForm extends Component {
     render() {
         // console.log(this.props)
         return (
-            <div>
+            <>
                 <button className="" onClick={this.openModal}>Open Modal</button>
                 <Modal
                     // ref={(modal) => { this.modal = modal }}
@@ -74,7 +74,7 @@ class ContactForm extends Component {
                         </p>
                     </form>
                 </Modal>            
-            </div>
+            </>
 
         )
     }
