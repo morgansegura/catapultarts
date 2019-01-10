@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import get from 'lodash/get'
 import PropTypes from 'prop-types'
 import { Link, graphql } from "gatsby"
-import Layout from '../layouts/Layout'
+import Layout from '../components/Layout'
 import { limitByWord } from '../utils/helpers'
 
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'

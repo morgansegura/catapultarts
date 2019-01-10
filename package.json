@@ -55,6 +55,7 @@
     "react-dom": "^16.4.1",
     "react-headroom": "^2.2.2",
     "react-helmet": "^5.2.0",
+    "react-markdown": "^4.0.6",
     "react-modal": "^3.7.1",
     "react-share": "^1.19.0",
     "react-stripe-checkout": "^2.6.3",

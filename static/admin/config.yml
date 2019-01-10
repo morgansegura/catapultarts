@@ -24,10 +24,9 @@ collections:
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
-
-
   - name: "pages"
     label: "Pages"
+    create: true
     files:
       - file: "src/pages/about/index.md"
         label: "About"
@@ -77,29 +76,6 @@ collections:
                   },
                 ],
             }
-          - {
-              label: "SEO & Meta",
-              name: "seo",
-              widget: "object",
-              fields:
-                [
-                  { label: "Browser Tab Title", name: "browserTitle", widget: "string"},
-                  { label: "Title", name: "title", widget: "string" },
-                  { label: "Description", name: "description", widget: "string" },
-                ],
-            }
-      - file: "src/pages/pastMeetups/index.md"
-        label: "Past Meetups"
-        name: "pastMeetups"
-        fields:
-          - {
-              label: "Template Key",
-              name: "templateKey",
-              widget: "hidden",
-              default: "past-meetups-page",
-            }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
           - {
               label: "SEO & Meta",
               name: "seo",
@@ -196,11 +172,12 @@ collections:
                   { label: "Description", name: "description", widget: "string" },
                 ],
             }
-  - name: "navbarAndFooter"
-    label: "Navbar & Footer"
+  # Settings Section
+  - name: "settings"
+    label: "Settings"
     files:
-      - file: "src/pages/navbar/index.md"
-        label: "Navbar"
+      - file: "src/pages/partials/navbar/index.md"
+        label: "Navigation"
         name: "navbar"
         fields:
           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "navbar" }
@@ -210,12 +187,12 @@ collections:
               widget: "list",
               fields:
                 [
-                  { label: "Label", name: "label", widget: "string" },
-                  { label: "Link Type", name: "linkType", widget: "select", options: ["internal", "external"] },
-                  { label: "Link URL", name: "linkURL", widget: "string", hint: "Use a relative URL (e.g. /about) if the link is an internal link." },
+                  { label: "Label", name: "label", widget: "string", hint: "The visible text in this link." },
+                  { label: "Link Type", name: "linkType", widget: "select", options: ["internal", "external"], hint: "Choose between internal and external." },
+                  { label: "Link URL", name: "linkURL", widget: "string", hint: "Use a relative URL (e.g. /about) if the link is an internal link. Otherwise, (e.g. https://google.com)" },
                 ],
             }
-      - file: "src/pages/footer/index.md"
+      - file: "src/pages/partials/footer/index.md"
         label: "Footer"
         name: "footer"
         fields:
@@ -237,9 +214,9 @@ collections:
               widget: "list",
               fields:
                 [
-                  { label: "Image", name: "image", widget: "image" },
-                  { label: "Image Description", name: "imageAlt", widget: "string" },
-                  { label: "Label", name: "label", widget: "string" },
-                  { label: "Link URL", name: "linkURL", widget: "string" },
+                  { label: "Image", name: "image", widget: "image", hint: "Best image size, (60x60)" },
+                  { label: "Link URL", name: "linkURL", widget: "string", hint: "Href tag for this link." },
+                  { label: "Image Description", name: "imageAlt", widget: "string", hint: "(SEO) Alt tag for this image."  },
+                  { label: "Label", name: "label", widget: "string", hint: "(SEO) Title of this link." },                  
                 ],
             }

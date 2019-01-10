@@ -5,8 +5,7 @@ import ReactMarkdown from "react-markdown";
 import Helmet from "react-helmet";
 
 import Layout from "../components/Layout";
-import HTMLContent from "../components/Content";
-import "../styles/about-page.scss";
+// import HTMLContent from "../components/Content";
 
 export const AboutPageTemplate = props => {
   const { page } = props;

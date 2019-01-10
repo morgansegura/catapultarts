@@ -7,6 +7,7 @@ module.exports = {
   siteMetadata: {
     title: 'Gatsby + WordPress Starter',
     siteUrl: 'https://catapultarts.com/app',
+    description: 'If you don\'t know me by now, I doubt you\'ll ever know me. I won\'t win a Tony',
     keywords: 'Gatsby.js, React.js, GraphQL, Netlify, NetlifyCMS, Gulp, PostCSS'
   },
   plugins: [
@@ -134,7 +135,7 @@ module.exports = {
       options: {
         manualInit: false,
         enableIdentityWidget: true,
-        modulePath: `${__dirname}/src/admin/cms.js`,
+        modulePath: `${__dirname}/src/cms/cms.js`,
         htmlTitle: `Content Manager`,
       },
     },    

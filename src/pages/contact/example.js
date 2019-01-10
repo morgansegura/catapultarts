@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import Link from "gatsby-link";
-import Layout from '../../layouts/Layout'
+import Layout from '../../components/Layout'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
     render() {
         return (
             <Layout>

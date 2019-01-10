@@ -1,7 +1,5 @@
 import React from "react";
-
-import "./styles.scss";
-import CustomLink from "../CustomLink";
+import CustomLink from "../components/CustomLink";
 
 export const NavbarTemplate = ({ data }) => (
   <nav className="navbar">

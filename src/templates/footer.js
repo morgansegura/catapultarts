@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles.scss";
 
 export const FooterTemplate = ({ data }) => {
   const { logoImage, socialLinks } = data;
@@ -43,7 +42,7 @@ export const FooterTemplate = ({ data }) => {
         <div className="footer-bottom">
           <div className="footer-flag">
             <span role="img" aria-label="Made in Canada">
-              🇨🇦
+              🇨
             </span>
           </div>
         </div>
