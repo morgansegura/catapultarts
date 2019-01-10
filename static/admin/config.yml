@@ -24,8 +24,22 @@ collections:
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
+
+  # Pages that can be create from within the admin
+  - name: "page"
+    label: "Custom Pages"
+    folder: "src/pages/page"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "page-custom"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      
   - name: "pages"
-    label: "Pages"
+    label: "Prebuilt Pages"
     create: true
     files:
       - file: "src/pages/about/index.md"
