@@ -4,7 +4,6 @@ logoImage:
   img: /images/logo.svg
   imageWidth: 40
   imageLabel: Catapult Arts
-  imageAlt: Catapult Arts Logo
 menuItems:
   - label: home
     linkType: internal
