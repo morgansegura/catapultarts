@@ -15,8 +15,9 @@ const Navbar = ({ menuItems }) => {
         superToggle(wrapper, 'mobile-nav--is-open', 'mobile-nav--is-closed')
     }
     return (
-      <nav className="nav nav__main">        
-        {menuItems.length > 0 ?
+      <nav className="nav nav__main">   
+      {console.log(menuItems)}     
+        {!!menuItems ?
         // Note: Make the hamburger menu show if user add more than 5 links
         // Think about allowing users to create new menus and swap slocations
             <div className="nav__inner">
