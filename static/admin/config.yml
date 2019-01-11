@@ -168,7 +168,7 @@ collections:
     label: "Settings"
     files:
       - file: "src/pages/settings/navbar/index.md"
-        label: "Navbar settings"
+    editor:
         name: "navbar"
         fields:
           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "navbar" }
@@ -178,9 +178,9 @@ collections:
               widget: "object",
               fields:
                 [
-                  { label: "Image", name: "image", widget: "image" },
-                  { label: "Image Description", name: "imageAlt", widget: "string" },
-                  { label: "Image Width", name: "imageWidth", widget: "number", hint: "The width of your logo in the header. Default: 40px" },
+                  { label: "Image", name: "img", widget: "image", hint: "Upload an image. Leave blank to display text." },
+                  { label: "Image Description", name: "imageAlt", widget: "string", hint: "(SEO) The Alt tage for this image." },
+                  { label: "Image Width", name: "imageWidth", widget: "number", default: 40, valueType: "int", hint: "The width of your logo in the header in pixels. Default: 40px" },
                   { label: "Image Label", name: "imageLabel", widget: "string", hint: "This text will show up if there is no image." },
                 ],
             }          

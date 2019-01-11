@@ -24,7 +24,7 @@ const TemplateWrapper = ({ footerData = null, navbarData = null, children }) => 
               id
               frontmatter {
                 logoImage {
-                  image {
+                  img {
                     id
                     childImageSharp {
                       fluid(maxWidth: 100) {
@@ -50,18 +50,6 @@ const TemplateWrapper = ({ footerData = null, navbarData = null, children }) => 
             node {
               id
               frontmatter {
-                logoImage {
-                  image {
-                    id
-                    childImageSharp {
-                      fluid(maxWidth: 60) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }                    
-                  }
-                  imageAlt
-                  tagline
-                }
                 socialLinks {
                   image
                   imageAlt

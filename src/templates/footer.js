@@ -8,14 +8,7 @@ export const FooterTemplate = ({ data }) => {
       <div className="footer-container  container">
         <div className="footer-top">
           <div className="footer-about">
-            <h4 className="footer-aboutTitle">
-              <img
-                className="footer-aboutTitleImg"
-                src={logoImage.image}
-                alt={logoImage.imageAlt}
-              />
-            </h4>
-            <p className="footer-aboutDescription">{logoImage.tagline}</p>
+
           </div>
           {socialLinks.length > 0 && (
             <ul className="footer-socialMenu">
