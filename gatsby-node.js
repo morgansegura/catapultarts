@@ -162,7 +162,6 @@ exports.onCreateNode = async ({ node, actions, getNode, cache, store, createNode
       value,
     })
 
-
     // Attach thumbnail's ImageSharp node by public path if necessary
     if (typeof node.frontmatter.thumbnail === 'string') {
       // Find absolute path of linked path
