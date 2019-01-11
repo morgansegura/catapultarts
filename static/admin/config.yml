@@ -2,9 +2,6 @@ backend:
   name: github
   repo: morgansegura/catapultarts
   branch: master
-  accept_roles:
-    - admin
-    - editor  
 publish_mode: editorial_workflow
 media_folder: static/images
 public_folder: /images
@@ -200,17 +197,6 @@ collections:
         name: "footer"
         fields:
           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "footer" }
-          - {
-              label: "Logo Image & Tagline",
-              name: "logoImage",
-              widget: "object",
-              fields:
-                [
-                  { label: "Image", name: "image", widget: "image" },
-                  { label: "Image Description", name: "imageAlt", widget: "string" },
-                  { label: "Tagline", name: "tagline", widget: "string" },
-                ],
-            }
           - {
               label: "Social Links",
               name: "socialLinks",

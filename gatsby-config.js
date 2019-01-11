@@ -66,6 +66,7 @@ module.exports = {
       },
     },
     'gatsby-transformer-sharp',
+    // `gatsby-plugin-netlify-cms-paths`,
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -90,7 +91,14 @@ module.exports = {
             options: {
               destinationDir: 'static',
             }
-          }
+          },
+          // {   
+          //   resolve: `gatsby-plugin-netlify-cms-paths`,
+          //   options: {
+          //     // Path to your Netlify CMS config file
+          //     cmsConfig: `/static/admin/config.yml`
+          //   }
+          // }          
         ],
       },
     },    

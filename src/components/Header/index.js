@@ -36,10 +36,13 @@ class Header extends Component {
                 <div className="container">
                     <div className="header__main__inner">
                         <Link className="logo" to="/" title="">
-                            {logoImage.image.childImageSharp !== null ?
+                            {!!logoImage ?
+                                logoImage.image.childImageSharp !== null ?
                                 <PreviewCompatibleImage className="hello" imageInfo={logoImage}/>
-                            :
-                            <h2 className="title">{logoImage.imageLabel}</h2>
+                                :                            
+                                <h2 className="title">{logoImage.imageLabel && logoImage.imageLabel}</h2>
+                                :
+                                null
                             }
                         </Link>
                         <Navbar menuItems={menuItems} />

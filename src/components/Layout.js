@@ -25,14 +25,12 @@ const TemplateWrapper = ({ children }) => (
               frontmatter {
                 logoImage {
                   image {
-                    id
                     childImageSharp {
                       fluid(maxWidth: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }                    
-                  }
-                  # image
+                  }                  
                   imageAlt
                   imageWidth
                   imageLabel
@@ -65,6 +63,7 @@ const TemplateWrapper = ({ children }) => (
     `}
   render={ data => (
         <> 
+        {console.log(data)}
         <Helmet>
           <html lang="en" />
           <title>This will be from the admin</title>
