@@ -27,12 +27,14 @@ const TemplateWrapper = ({ footerData = null, navbarData = null, children }) => 
                   image {
                     id
                     childImageSharp {
-                      fluid(maxWidth: 60) {
+                      fluid(maxWidth: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }                    
                   }
                   imageAlt
+                  imageWidth
+                  imageLabel
                 }
                 menuItems {
                   label

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'gatsby';
 import Navbar from '../Navbar'
-// import Logo from '../Accessories/Logo'
 import PreviewCompatibleImage from '../PreviewCompatibleImage'
 
 // import AOS from 'aos'
@@ -26,7 +25,6 @@ class Header extends Component {
         // AOS
         // AOS.init()
     }
-    
 
     render() {
         const { data } = this.props;
@@ -41,7 +39,7 @@ class Header extends Component {
                             {!!logoImage && logoImage.image !== null ?
                                 <PreviewCompatibleImage className="hello" imageInfo={logoImage}/>
                             :
-                            <h2 className="title">Site Title</h2>
+                            <h2 className="title">{logoImage.imageLabel}</h2>
                             }
                         </Link>
                         <Navbar menuItems={menuItems} />

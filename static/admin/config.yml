@@ -180,6 +180,8 @@ collections:
                 [
                   { label: "Image", name: "image", widget: "image" },
                   { label: "Image Description", name: "imageAlt", widget: "string" },
+                  { label: "Image Width", name: "imageWidth", widget: "number", hint: "The width of your logo in the header. Default: 40px" },
+                  { label: "Image Label", name: "imageLabel", widget: "string", hint: "This text will show up if there is no image." },
                 ],
             }          
           - {

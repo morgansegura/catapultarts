@@ -76,17 +76,18 @@
         justify-content: center;
         margin-bottom: 0;
 
+        /* Think about allowing size in admin */
+
         &__header {
             width: 40px;
             height: 40px;
         }
         &__image {
-            -webkit-mask: url(../images/logo.svg) no-repeat 50% 0px;
+            /* -webkit-mask: url(../images/logo.svg) no-repeat 50% 0px;
             mask: url(../images/logo.svg) no-repeat 50% 0px;
             position: relative;
-            top: 10px;
+            top: 10px; */
             /* background-size: 50%; */
-
             span {
                 opacity: 0;
                 visibility: hidden;
