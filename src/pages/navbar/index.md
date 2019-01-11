@@ -1,7 +1,7 @@
 ---
 templateKey: navbar
 logo:
-  image: /images/android-chrome-512x512.png
+  image: /images/logo.svg
 menuItems:
   - label: about
     linkType: internal
