@@ -20,6 +20,7 @@
     "gatsby-plugin-netlify": "^2.0.0",
     "gatsby-plugin-netlify-cache": "^1.0.0",
     "gatsby-plugin-netlify-cms": "^3.0.9",
+    "gatsby-plugin-netlify-cms-paths": "^1.1.0",
     "gatsby-plugin-nprogress": "^2.0.7",
     "gatsby-plugin-offline": "^2.0.21",
     "gatsby-plugin-purgecss": "^2.4.0",

@@ -30,7 +30,7 @@ class Header extends Component {
         const { data } = this.props;
         const { menuItems } = data.edges[0].node.frontmatter
         const { logoImage } = data.edges[0].node.frontmatter
-
+        console.log(data.edges[0].node.frontmatter)
         return (
             <header id="headerMain" className="header__main">
                 <div className="container">

@@ -4,11 +4,11 @@ import Img from 'gatsby-image'
 
 const PreviewCompatibleImage = ({ imageInfo }) => {
 
-  const { alt = '', childImageSharp, img } = imageInfo
+  const { alt = '', childImageSharp, image } = imageInfo
 
-  if (!!img && !!img.childImageSharp) {
+  if (!!image && !!image.childImageSharp) {
     return (
-      <Img style={{ width: imageInfo.imageWidth + 'px' }} fluid={img.childImageSharp.fluid} alt={imageInfo.imageLabel} />
+      <Img style={{ width: imageInfo.imageWidth + 'px' }} fluid={image.childImageSharp.fluid} alt={imageInfo.imageLabel} />
     )
   }
 
@@ -16,8 +16,8 @@ const PreviewCompatibleImage = ({ imageInfo }) => {
     return <Img style={{ width: imageInfo.imageWidth + 'px' }} fluid={childImageSharp.fluid} alt={imageInfo.imageLabel} />
   }
 
-  if (!!img && typeof image === 'string')
-    return <img style={{ width: imageInfo.imageWidth + 'px' }} src={img} alt={imageInfo.imageLabel} />
+  if (!!image && typeof image === 'string')
+    return <img style={{ width: imageInfo.imageWidth + 'px' }} src={image} alt={imageInfo.imageLabel} />
 
   return null
 }
@@ -26,7 +26,7 @@ PreviewCompatibleImage.propTypes = {
   imageInfo: PropTypes.shape({
     alt: PropTypes.string,
     childImageSharp: PropTypes.object,
-    img: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
+    image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
     style: PropTypes.object,
   }).isRequired,
 }
