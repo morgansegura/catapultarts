@@ -20,7 +20,7 @@
     }
 
     @mixin atMedium {
-        width: 100%;
+        width: auto;
         top: 0;
         right: 0;
         z-index: 5;

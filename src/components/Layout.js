@@ -65,7 +65,6 @@ const TemplateWrapper = ({ children }) => (
     `}
   render={ data => (
         <> 
-        {console.log(data)}
         <Helmet>
           <html lang="en" />
           <title>This will be from the admin</title>
