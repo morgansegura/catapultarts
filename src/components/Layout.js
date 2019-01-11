@@ -24,15 +24,15 @@ const TemplateWrapper = ({ footerData = null, navbarData = null, children }) => 
               id
               frontmatter {
                 logoImage {
-                  # image {
-                  #   id
-                  #   childImageSharp {
-                  #     fluid(maxWidth: 100) {
-                  #       ...GatsbyImageSharpFluid
-                  #     }
-                  #   }                    
-                  # }
-                  image
+                  img {
+                    id
+                    childImageSharp {
+                      fluid(maxWidth: 100) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }                    
+                  }
+                  # image
                   imageAlt
                   imageWidth
                   imageLabel

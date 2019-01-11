@@ -168,12 +168,13 @@ collections:
     label: "Settings"
     files:
       - file: "src/pages/settings/navbar/index.md"
+        label: "Navigation"
         name: "navbar"
         fields:
           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "navbar" }
           - {
               label: "Logo",
-              name: "logo",
+              name: "logoImage",
               widget: "object",
               fields:
                 [
