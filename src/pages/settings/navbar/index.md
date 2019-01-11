@@ -1,10 +1,10 @@
 ---
 templateKey: navbar
-logoImage: 
-  img:
-  imageWidth: 40
-  imageLabel: Catapult Arts
+logo:
   imageAlt: Catapult Arts Logo
+  imageLabel: Catapult Arts
+  imageWidth: 40
+  img: /images/logo.svg
 menuItems:
   - label: home
     linkType: internal
@@ -12,7 +12,5 @@ menuItems:
   - label: about
     linkType: internal
     linkURL: /about
-  - label: past meetups
-    linkType: internal
-    linkURL: /meetups
 ---
+
