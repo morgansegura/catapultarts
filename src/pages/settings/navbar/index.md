@@ -1,5 +1,8 @@
 ---
 templateKey: navbar
+logoImage: 
+  image: /images/android-chrome-512x512.png
+  imageAlt: JavaScript Wakanda
 menuItems:
   - label: home
     linkType: internal

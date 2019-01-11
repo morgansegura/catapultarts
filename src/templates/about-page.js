@@ -120,6 +120,6 @@ export const aboutPageQuery = graphql`
         }
       }
     }
-    ...LayoutFragment
+    # ...LayoutFragment
   }
 `;

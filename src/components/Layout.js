@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import Header from '../components/Header'
 import { Footer } from './Footer'
-import config from '../data/siteConfig'
+// import config from '../data/siteConfig'
 
 
 import '../assets/css/styles.css'
@@ -18,15 +18,66 @@ const TemplateWrapper = ({ footerData = null, navbarData = null, children }) => 
             description
           }
         }
-      }
+        navbarData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "navbar" } } }) {
+          edges {
+            node {
+              id
+              frontmatter {
+                logoImage {
+                  image {
+                    id
+                    childImageSharp {
+                      fluid(maxWidth: 60) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }                    
+                  }
+                  imageAlt
+                }
+                menuItems {
+                  label
+                  linkType
+                  linkURL
+                }
+              }
+            }
+          }
+        }
+        footerData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "footer" } } }) {
+          edges {
+            node {
+              id
+              frontmatter {
+                logoImage {
+                  image {
+                    id
+                    childImageSharp {
+                      fluid(maxWidth: 60) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }                    
+                  }
+                  imageAlt
+                  tagline
+                }
+                socialLinks {
+                  image
+                  imageAlt
+                  label
+                  linkURL
+                }
+              }
+            }
+          }
+        }
+      }      
     `}
   render={ data => (
         <> 
-        {console.log(data)}
         <Helmet>
           <html lang="en" />
-          <title>{config.siteTitleAlt}</title>
-          <meta name="description" content={config.siteDescription} />
+          <title>This will be from the admin</title>
+          <meta name="description" content="This will be from the admin" />
           <meta name="u2f-support" content="true" />
           <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
@@ -38,66 +89,23 @@ const TemplateWrapper = ({ footerData = null, navbarData = null, children }) => 
           <meta name="theme-color" content="#ffffff" />
 
           <meta property="og:type" content="business.business" />
-          <meta property="og:title" content={config.siteTitleAlt} />
+          <meta property="og:title" content="This will be from the admin" />
           <meta property="og:url" content="/" />
           <meta property="og:image" content="/images/og-image.jpg" />
 
           <script src="//code.iconify.design/1/1.0.0-rc1/iconify.min.js"></script>
         </Helmet>        
           <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-closed">
-          <Header data={navbarData} config={config} />
+          <Header data={data.navbarData} />
           <main className="main">
             {children}
           </main>
-          <Footer data={footerData} />
+          <Footer data={data.footerData} />
         </div>
         </>
       )}
     />
   )
-
-export const query = graphql`
-  fragment LayoutFragment on Query {
-    footerData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "footer" } } }) {
-      edges {
-        node {
-          id
-          frontmatter {
-            logoImage {
-              image
-              imageAlt
-              tagline
-            }
-            socialLinks {
-              image
-              imageAlt
-              label
-              linkURL
-            }
-          }
-        }
-      }
-    }
-    navbarData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "navbar" } } }) {
-      edges {
-        node {
-          id
-          frontmatter {
-            logoImage {
-              image
-              imageAlt
-            }
-            menuItems {
-              label
-              linkType
-              linkURL
-            }
-          }
-        }
-      }
-    }
-  }
-`;
 
 export default TemplateWrapper
 

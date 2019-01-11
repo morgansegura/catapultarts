@@ -1,26 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'gatsby';
-import { Navbar } from '../Navbar'
-import Logo from '../Accessories/Logo'
-import AOS from 'aos'
+import Navbar from '../Navbar'
+// import Logo from '../Accessories/Logo'
+import PreviewCompatibleImage from '../PreviewCompatibleImage'
+
+// import AOS from 'aos'
 
 class Header extends Component {    
 
-    constructor() {
-        super()
-    }
-
-    state = {
-        userHasScrolled: false,
-        isMobileNav: false,
-        mobileNavIsOpen: false
-    }
-
     componentDidMount() {
         const wrapper = document.getElementById("wrapper");
-
         window.onscroll = (e) => {
-            this.state.userHasScrolled = true
             const header = document.getElementById("headerMain");
             scrollFunction()
             function scrollFunction() {
@@ -33,32 +23,34 @@ class Header extends Component {
                 }
             }
         }
-
         // AOS
-        AOS.init()        
+        // AOS.init()
     }
+    
 
     render() {
-        console.log(this.props)
-        const menuStyle = 'desktop'
+        const { data } = this.props;
+        const { menuItems } = data.edges[0].node.frontmatter
+        const { logoImage } = data.edges[0].node.frontmatter
 
         return (
             <header id="headerMain" className="header__main">
                 <div className="container">
                     <div className="header__main__inner">
                         <Link className="logo" to="/" title="">
-                            {!Logo ?
-                                <Logo classList={`logo__header logo--black`} />
-                                :
-                                <h2 className="title">{this.props.config.siteTitle}</h2>
+                            {!!logoImage && logoImage.image !== null ?
+                                <PreviewCompatibleImage className="hello" imageInfo={logoImage}/>
+                            :
+                            <h2 className="title">Site Title</h2>
                             }
                         </Link>
-                        <Navbar menuStyle={menuStyle} />
+                        <Navbar menuItems={menuItems} />
                     </div>
                 </div>
             </header>
         );
     }
 }
+
 
 export default Header;

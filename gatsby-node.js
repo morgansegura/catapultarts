@@ -37,20 +37,58 @@ exports.createPages = ({ actions, graphql }) => {
 
     const posts = result.data.allMarkdownRemark.edges
 
-    posts.forEach(edge => {
-      const id = edge.node.id
+
+    // Filter out the footer, navbar, and meetups so we don't create pages for those
+    const postOrPage = result.data.allMarkdownRemark.edges.filter(edge => {
+      if (edge.node.frontmatter.templateKey === "navbar") {
+        return false;
+      } else if (edge.node.frontmatter.templateKey === "footer") {
+        return false;
+      } else {
+        return !Boolean(edge.node.fields.slug.match(/^\/meetups\/.*$/));
+      }
+    });
+
+    postOrPage.forEach(edge => {
+      let component, pathName, tags;
+      if (edge.node.frontmatter.templateKey === "home-page") {
+        pathName = "/";
+        component = path.resolve(`src/pages/index.js`);
+      } else {
+        pathName = edge.node.frontmatter.path || edge.node.fields.slug;
+        component = path.resolve(`src/templates/${String(edge.node.frontmatter.templateKey)}.js`);
+
+        if (edge.node.frontmatter.templateKey === `blog`) {
+          tags = edge.node.frontmatter.tags
+        }
+      }
+      const id = edge.node.id;
       createPage({
-        path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
-        component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
-        ),
-        // additional data can be passed via context
+        path: pathName,
+        component,
+        tags: tags,
         context: {
           id,
         },
-      })
-    })
+      });
+    });
+
+
+    // posts.forEach(edge => {
+    //   const id = edge.node.id
+    //   console.log(edge.node.fields.slug)
+    //   createPage({
+    //     path: edge.node.fields.slug,
+    //     tags: edge.node.frontmatter.tags,
+    //     component: path.resolve(
+    //       `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+    //     ),
+    //     // additional data can be passed via context
+    //     context: {
+    //       id,
+    //     },
+    //   })
+    // })
 
     // Tag pages:
     let tags = []
@@ -75,36 +113,6 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
-
-    // Filter out the footer, navbar, and meetups so we don't create pages for those
-    const postOrPage = result.data.allMarkdownRemark.edges.filter(edge => {
-      if (edge.node.frontmatter.templateKey === "navbar") {
-        return false;
-      } else if (edge.node.frontmatter.templateKey === "footer") {
-        return false;
-      } else {
-        return !Boolean(edge.node.fields.slug.match(/^\/meetups\/.*$/));
-      }
-    });
-
-    postOrPage.forEach(edge => {
-      let component, pathName;
-      if (edge.node.frontmatter.templateKey === "home-page") {
-        pathName = "/";
-        component = path.resolve(`src/pages/index.js`);
-      } else {
-        pathName = edge.node.frontmatter.path || edge.node.fields.slug;
-        component = path.resolve(`src/templates/${String(edge.node.frontmatter.templateKey)}.js`);
-      }
-      const id = edge.node.id;
-      createPage({
-        path: pathName,
-        component,
-        context: {
-          id,
-        },
-      });
-    });
 
   }).then(() => { 
     const productPageTemplate = path.resolve('src/templates/ProductPage.js')
