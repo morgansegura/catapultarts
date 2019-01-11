@@ -8,7 +8,7 @@ import { Footer } from './Footer'
 
 import '../assets/css/styles.css'
 
-const TemplateWrapper = ({ footerData = null, navbarData = null, children }) => (
+const TemplateWrapper = ({ children }) => (
   <StaticQuery
     query={graphql`
       query HeadingQuery {
@@ -65,6 +65,7 @@ const TemplateWrapper = ({ footerData = null, navbarData = null, children }) => 
     `}
   render={ data => (
         <> 
+        {console.log(data)}
         <Helmet>
           <html lang="en" />
           <title>This will be from the admin</title>
