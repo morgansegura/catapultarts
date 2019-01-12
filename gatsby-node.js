@@ -148,23 +148,45 @@ exports.createPages = ({ actions, graphql }) => {
 }
 
 exports.onCreateNode = async ({ node, actions, getNode, cache, store, createNodeId }) => {
-  const { createNodeField, createNode } = actions
+  const { createNodeField, createNode } = actions  
   let fileNode
 
-  // fmImagesToRelative(node) // convert image paths for gatsby images
+  fmImagesToRelative(node) // convert image paths for gatsby images
 
-  const { frontmatter } = node
-  if (frontmatter) {
-    const { image } = frontmatter
-    if (image) {
-      if (image.indexOf('/images') === 0) {
-        frontmatter.image = path.relative(
-          path.dirname(node.fileAbsolutePath),
-          path.join(__dirname, '/static/', image)
-        )
-      }
-    }
-  }  
+    // // Attach thumbnail's ImageSharp node by public path if necessary
+    // if (typeof node.frontmatter.image === 'string') {
+    //   // Find absolute path of linked path
+    //   const pathToFile = path
+    //     .join(__dirname, 'static', node.frontmatter.image)
+    //     .split(path.sep)
+    //     .join('/');
+
+    //   // Find ID of File node
+    //   const fileNode = getNodes().find(n => n.absolutePath === pathToFile);
+
+    //   if (fileNode !== null) {
+    //     // Find ImageSharp node corresponding to the File node
+    //     const imageSharpNodeId = fileNode.children.find(n => n.endsWith('>> ImageSharp'));
+    //     const imageSharpNode = getNodes().find(n => n.id === imageSharpNodeId);
+
+    //     // Add ImageSharp node as child
+    //     createParentChildLink({ parent: node, child: imageSharpNode });
+    //   }
+    // }
+
+
+  // if (frontmatter) {
+  //   const { image } = frontmatter
+  //   if (image) {
+  //     if (image.indexOf('/images') === 0) {
+  //       frontmatter.image = path.relative(
+  //         path.dirname(node.fileAbsolutePath),
+  //         path.join(__dirname, '/static/', image)
+  //       )
+  //     }
+  //   }
+  // }
+
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
@@ -174,6 +196,7 @@ exports.onCreateNode = async ({ node, actions, getNode, cache, store, createNode
       node,
       value,
     })
+
   }
   
 
