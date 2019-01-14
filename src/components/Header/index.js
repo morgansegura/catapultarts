@@ -28,24 +28,23 @@ class Header extends Component {
 
     render() {
         const { data } = this.props;
-        const { menuItems } = data.edges[0].node.frontmatter
-        const { logoImage } = data.edges[0].node.frontmatter
-        console.log(data.edges[0].node.frontmatter)
+        // const { menuItems } = data.menuItems
+        console.log(data)
         return (
             <header id="headerMain" className="header__main">
                 <div className="container">
-                    <div className="header__main__inner">
+                    <div className={`header__main__inner ${}`}>
                         <Link className="logo" to="/" title="">
-                            {!!logoImage ?
-                                logoImage.image !== null ?
-                                <PreviewCompatibleImage className="hello" imageInfo={logoImage}/>
+                            {!!data.logoImage ?
+                                data.logoImage !== null ?
+                                <PreviewCompatibleImage className="hello" imageInfo={data.logoImage}/>
                                 :                            
-                                <h2 className="title">{logoImage.imageLabel && logoImage.imageLabel}</h2>
+                                <h2 className="title">{data.logoImage.imageLabel && data.logoImage.imageLabel}</h2>
                                 :
                                 null
                             }
                         </Link>
-                        <Navbar menuItems={menuItems} />
+                        <Navbar />
                     </div>
                 </div>
             </header>

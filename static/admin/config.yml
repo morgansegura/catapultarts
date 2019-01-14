@@ -171,13 +171,13 @@ collections:
         fields:
           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "settings" }       
           - {
-              label: "Meta Settings",
+              label: "Override Meta Settings",
               name: "meta",
               widget: "object",
               fields:
                 [
                   { label: "Title", name: "title", widget: "string", hint: "This title will be displayed in the <head> of your website." },
-                  { label: "Meta Keywords", name: "keywords", widget: "string", options: ["internal", "external"], hint: "Create strong meta keywords for your main page." },
+                  { label: "Meta Keywords", name: "keywords", widget: "select", options: ["internal", "external"], hint: "Create strong meta keywords for your main page." },
                   { label: "Meta Description", name: "description", widget: "string", hint: "Create a good meta description for your main page." },
                 ],
             }
@@ -188,20 +188,13 @@ collections:
               fields:
                 [
                   { label: "Image", name: "image", widget: "image", hint: "Upload an image. Leave blank to display text." },
-                  { label: "Image Description", name: "imageAlt", widget: "string", hint: "(SEO) The Alt tage for this image." },
+                  { label: "Image Description", name: "imageAlt", widget: "string", hint: "(SEO) The Alt tage for this image." },                  
                   { label: "Image Width", name: "imageWidth", widget: "number", default: 40, valueType: "int", hint: "The width of your logo in the header in pixels. Default: 40px" },
                   { label: "Image Label", name: "imageLabel", widget: "string", hint: "This text will show up if there is no image." },
+                  { label: "Location Desktop", name: "locationDesktop", widget: "select", options: ["left", "center", "right"], default: "left", hint: "Location of the logo in the header (Desktop)." },
+                  { label: "Location Mobile", name: "locationMobile", widget: "select", options: ["left", "center", "right"], default: "center", hint: "Location of the logo in the header (Mobile)." },
                 ],
-            } 
-          - {
-              label: "Media Icon",
-              name: "iconMedia",
-              widget: "object",
-              fields:
-                [
-                  { label: "Image", name: "image", widget: "image", hint: "Please add a square image at least (180x180) to be used as your favicon, mobile and tablet icons.", required: false },
-                ],
-            } 
+            }
           - {
               label: "Custom Styles",
               name: "css",

@@ -54,6 +54,7 @@ const TemplateWrapper = ({ children }) => (
   render={ data => {
     console.log(data)
     const { frontmatter: preData } = data.settingsData.edges[0].node
+
     return (
         <> 
           <Helmet
@@ -92,7 +93,7 @@ const TemplateWrapper = ({ children }) => (
             </Helmet>   
 
             <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-closed">
-            <Header data={preData.logoImage} />
+          <Header data={preData} />
             <main className="main">
               {children}
             </main>
