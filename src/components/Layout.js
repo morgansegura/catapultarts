@@ -22,7 +22,6 @@ const TemplateWrapper = ({ children }) => (
             node {
               id
               frontmatter {
-
                 logoImage {
                   image  {
                     childImageSharp {
@@ -67,15 +66,6 @@ const TemplateWrapper = ({ children }) => (
               name: "u2f-support",
               content: "true" 
             },
-            /* Theme Settings */
-            {
-              name: "msapplication-TileColor",
-              content: "#da532c"
-            },
-            {
-              name: "theme-color",
-              content: "#ffffff"
-            }
             /*
               http://ogp.me/  (Open Graph)
             */
@@ -84,20 +74,21 @@ const TemplateWrapper = ({ children }) => (
             /* Icons */
             { rel: 'icon', type: 'image/png', sizes: "16x16", href: `${favicon16}` },
             { rel: 'icon', type: 'image/png', sizes: "32x32", href: `${favicon32}` },
-            { rel: 'mask-icon', color: "#5bbad5", type: 'image/png', href: `${favicon64}` },
             { rel: 'shortcut icon', type: 'image/png', href: `${favicon64}` },
+          { rel: 'apple-touch-icon', sizes: "180x180", href: `${favicon64}` },
           ]}            
           script={[
             /* Icons */
-            { src: '//code.iconify.design/1/1.0.0-rc1/iconify.min.js', type: 'image/png', sizes: "16x16" },
-          ]}            
-
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />          
-          <link rel="manifest" href="/images/site.webmanifest" />
-          
-        </Helmet>        
+            { src: '//code.iconify.design/1/1.0.0-rc1/iconify.min.js', type: 'text/javascript'},
+          ]}
+          {!!CSS && CSS !== null ?
+            <style style="text/css">
+              {
+                data.CSS
+              }
+            </style>
+          : null}
+        </Helmet>       
           <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-closed">
           <Header data={data.navbarData} />
           <main className="main">
