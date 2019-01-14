@@ -25,7 +25,7 @@ module.exports = {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/static/images`,
+        path: `${__dirname}/static/images/`,
         name: 'uploads',
       },
     },
@@ -66,7 +66,7 @@ module.exports = {
       },
     },
     'gatsby-transformer-sharp',
-    `gatsby-plugin-netlify-cms-paths`,
+    // `gatsby-plugin-netlify-cms-paths`,
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -80,18 +80,15 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
               maxWidth: 2048,
             },
           },
-          // {
-          //   resolve: 'gatsby-remark-copy-linked-files',
-          //   options: {
-          //     destinationDir: 'static',
-          //   }
-          // },
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: 'static',
+            }
+          },
           // {   
           //   resolve: `gatsby-plugin-netlify-cms-paths`,
           //   options: {

@@ -35,25 +35,25 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    const posts = result.data.allMarkdownRemark.edges
-
-
+    const excludeArray = ['navbar', 'footer']
     // Filter out the footer, navbar, and meetups so we don't create pages for those
-    const postOrPage = result.data.allMarkdownRemark.edges.filter(edge => {
-      if (edge.node.frontmatter.templateKey === "navbar") {
-        return false;
-      } else if (edge.node.frontmatter.templateKey === "footer") {
-        return false;
-      } else {
-        return !Boolean(edge.node.fields.slug.match(/^\/meetups\/.*$/));
-      }
+    const postOrPage = result.data.allMarkdownRemark.edges.filter((edge, i) => {
+      if (edge.node.frontmatter.templateKey === excludeArray[i]) {
+        return false;        
+      } 
+      // else {
+      //   // return !Boolean(edge.node.fields.slug.match(/^\/meetups\/.*$/));
+      //   console.log('No')
+      // }
     });
 
     postOrPage.forEach(edge => {
       let component, pathName, tags;
+
       if (edge.node.frontmatter.templateKey === "home-page") {
         pathName = "/";
         component = path.resolve(`src/pages/index.js`);
+
       } else {
         pathName = edge.node.frontmatter.path || edge.node.fields.slug;
         component = path.resolve(`src/templates/${String(edge.node.frontmatter.templateKey)}.js`);
@@ -73,27 +73,10 @@ exports.createPages = ({ actions, graphql }) => {
       });
     });
 
-
-    // posts.forEach(edge => {
-    //   const id = edge.node.id
-    //   console.log(edge.node.fields.slug)
-    //   createPage({
-    //     path: edge.node.fields.slug,
-    //     tags: edge.node.frontmatter.tags,
-    //     component: path.resolve(
-    //       `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
-    //     ),
-    //     // additional data can be passed via context
-    //     context: {
-    //       id,
-    //     },
-    //   })
-    // })
-
     // Tag pages:
     let tags = []
     // Iterate through each post, putting all found tags into `tags`
-    posts.forEach(edge => {
+    postOrPage.forEach(edge => {
       if (_.get(edge, `node.frontmatter.tags`)) {
         tags = tags.concat(edge.node.frontmatter.tags)
       }
@@ -148,16 +131,27 @@ exports.createPages = ({ actions, graphql }) => {
 }
 
 exports.onCreateNode = async ({ node, actions, getNode, cache, store, createNodeId }) => {
-  const { createNodeField, createNode } = actions  
+  const { createNodeField, createNode } = actions
+  const { frontmatter } = node
+  
   let fileNode
 
   fmImagesToRelative(node) // convert image paths for gatsby images
 
+  if (node.internal.type === `MarkdownRemark`) {
+    const value = createFilePath({ node, getNode })
+    console.log(node)
+    createNodeField({
+      name: `slug`,
+      node,
+      value,
+    })
+
     // // Attach thumbnail's ImageSharp node by public path if necessary
-    // if (typeof node.frontmatter.image === 'string') {
+    // if (typeof node.frontmatter.thumbnail === 'string') {
     //   // Find absolute path of linked path
     //   const pathToFile = path
-    //     .join(__dirname, 'static', node.frontmatter.image)
+    //     .join(__dirname, 'static', node.frontmatter.thumbnail)
     //     .split(path.sep)
     //     .join('/');
 
@@ -174,38 +168,10 @@ exports.onCreateNode = async ({ node, actions, getNode, cache, store, createNode
     //   }
     // }
 
-
-  // if (frontmatter) {
-  //   const { image } = frontmatter
-  //   if (image) {
-  //     if (image.indexOf('/images') === 0) {
-  //       frontmatter.image = path.relative(
-  //         path.dirname(node.fileAbsolutePath),
-  //         path.join(__dirname, '/static/', image)
-  //       )
-  //     }
-  //   }
-  // }
-
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    // console.log(node)
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-
   }
-  
 
+  if (node.internal && node.internal.type === `MoltinProduct`) {    
 
-
-
-
-  if (node.internal && node.internal.type === `MoltinProduct`) {
-    
     const mainImageHref = get(node, 'includedData.main_image.link.href')    
 
     fileNode = await createRemoteFileNode({

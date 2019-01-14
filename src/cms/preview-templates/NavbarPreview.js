@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Navbar } from "../../templates/navbar";
+import Navbar from "../../components/Navbar";
 
 const NavbarPreview = ({ entry }) => {
   const data = entry.getIn(["data"]).toJS();

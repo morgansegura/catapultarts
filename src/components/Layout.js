@@ -2,9 +2,8 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import Header from '../components/Header'
-import { Footer } from './Footer'
+import Footer from './Footer'
 // import config from '../data/siteConfig'
-
 
 import '../assets/css/styles.css'
 

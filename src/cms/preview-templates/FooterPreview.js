@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { FooterTemplate } from "../../components/Footer";
+import FooterTemplate from "../../components/Footer";
 
 const FooterPreview = ({ entry }) => {
   const data = entry.getIn(["data"]).toJS();
