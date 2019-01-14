@@ -164,23 +164,23 @@ collections:
   - name: "settings"
     label: "Settings"
     files:
-      - file: "src/pages/navbar/index.md"
-        label: "Navigation"
-        name: "navbar"
+    # Site Settings (Logo and Menu)
+      - file: "src/pages/settings/index.md"
+        label: "Site Settings"
+        name: "settings"
         fields:
-          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "navbar" }
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "settings" }       
           - {
-              label: "Logo",
-              name: "logoImage",
-              widget: "object",
+              label: "(SEO) Meta Settings <a href='https://catapultarts.com/docs/seo'></a>",
+              name: "meta",
+              widget: "list",
               fields:
                 [
-                  { label: "Image", name: "image", widget: "image", hint: "Upload an image. Leave blank to display text." },
-                  { label: "Image Description", name: "imageAlt", widget: "string", hint: "(SEO) The Alt tage for this image." },
-                  { label: "Image Width", name: "imageWidth", widget: "number", default: 40, valueType: "int", hint: "The width of your logo in the header in pixels. Default: 40px" },
-                  { label: "Image Label", name: "imageLabel", widget: "string", hint: "This text will show up if there is no image." },
+                  { label: "Title", name: "title", widget: "string", hint: "This title will be displayed in the <head> of your website." },
+                  { label: "Meta Keywords", name: "metaKeywords", widget: "string", options: ["internal", "external"], hint: "Create a strong meta keywords for your main page." },
+                  { label: "Meta Description", name: "metaDesc", widget: "string", hint: "Create a good meta description for your main page." },
                 ],
-            }          
+            }
           - {
               label: "Menu Items",
               name: "menuItems",
@@ -192,20 +192,15 @@ collections:
                   { label: "Link URL", name: "linkURL", widget: "string", hint: "Use a relative URL (e.g. /about) if the link is an internal link. Otherwise, (e.g. https://google.com)" },
                 ],
             }
-      - file: "src/pages/settings/footer/index.md"
-        label: "Footer"
-        name: "footer"
-        fields:
-          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "footer" }
           - {
-              label: "Social Links",
-              name: "socialLinks",
-              widget: "list",
+              label: "Logo",
+              name: "logoImage",
+              widget: "object",
               fields:
                 [
-                  { label: "Image", name: "image", widget: "image", hint: "Best image size, (60x60)" },
-                  { label: "Link URL", name: "linkURL", widget: "string", hint: "Href tag for this link." },
-                  { label: "Image Description", name: "imageAlt", widget: "string", hint: "(SEO) Alt tag for this image."  },
-                  { label: "Label", name: "label", widget: "string", hint: "(SEO) Title of this link." },                  
+                  { label: "Image", name: "image", widget: "image", hint: "Upload an image. Leave blank to display text." },
+                  { label: "Image Description", name: "imageAlt", widget: "string", hint: "(SEO) The Alt tage for this image." },
+                  { label: "Image Width", name: "imageWidth", widget: "number", default: 40, valueType: "int", hint: "The width of your logo in the header in pixels. Default: 40px" },
+                  { label: "Image Label", name: "imageLabel", widget: "string", hint: "This text will show up if there is no image." },
                 ],
-            }
+            }             

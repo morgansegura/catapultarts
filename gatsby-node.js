@@ -35,16 +35,15 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    const excludeArray = ['navbar', 'footer']
-    // Filter out the footer, navbar, and meetups so we don't create pages for those
+    const excludeArray = ['settings']
     const postOrPage = result.data.allMarkdownRemark.edges.filter((edge, i) => {
-      // if (edge.node.frontmatter.templateKey === excludeArray[i]) {
-      //   return false;        
-      // } 
-      // // else {
-      // //   // return !Boolean(edge.node.fields.slug.match(/^\/meetups\/.*$/));
-      // //   console.log('No')
-      // // }
+      if (edge.node.frontmatter.templateKey === excludeArray[i]) {
+        return false;        
+      } 
+      // else {
+      //   // return !Boolean(edge.node.fields.slug.match(/^\/meetups\/.*$/));
+      //   console.log('No')
+      // }
     });
 
     postOrPage.forEach(edge => {
@@ -137,7 +136,6 @@ exports.onCreateNode = async ({ node, actions, getNode, cache, store, createNode
   let fileNode
 
   fmImagesToRelative(node) // convert image paths for gatsby images
-  console.log(fmImagesToRelative(node))
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })

@@ -17,11 +17,12 @@ const TemplateWrapper = ({ children }) => (
             description
           }
         }
-        navbarData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "navbar" } } }) {
+        navbarData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "settings" } } }) {
           edges {
             node {
               id
               frontmatter {
+
                 logoImage {
                   image  {
                     childImageSharp {
@@ -29,21 +30,16 @@ const TemplateWrapper = ({ children }) => (
                         ...GatsbyImageSharpFluid
                       }
                     }                    
-                  }             
+                  }                             
                   imageAlt
                   imageWidth
                   imageLabel
-                }
-                menuItems {
-                  label
-                  linkType
-                  linkURL
                 }
               }
             }
           }
         }
-        footerData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "footer" } } }) {
+        footerData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "menus" } } }) {
           edges {
             node {
               id
@@ -57,24 +53,50 @@ const TemplateWrapper = ({ children }) => (
         {console.log(data)}
         <Helmet>
           <html lang="en" />
-          <title>This will be from the admin</title>
-          <meta name="description" content="This will be from the admin" />
-          <meta name="u2f-support" content="true" />
+          title={data.meta.title}
+          meta={[
+            {
+              name: "description",
+              content: `${data.meta.description}`
+            },
+            {
+              name: "keywords",
+              content: `${data.meta.keywords}`
+            },
+            {
+              name: "u2f-support",
+              content: "true" 
+            },
+            /* Theme Settings */
+            {
+              name: "msapplication-TileColor",
+              content: "#da532c"
+            },
+            {
+              name: "theme-color",
+              content: "#ffffff"
+            }
+            /*
+              http://ogp.me/  (Open Graph)
+            */
+          ]}            
+          link={[
+            /* Icons */
+            { rel: 'icon', type: 'image/png', sizes: "16x16", href: `${favicon16}` },
+            { rel: 'icon', type: 'image/png', sizes: "32x32", href: `${favicon32}` },
+            { rel: 'mask-icon', color: "#5bbad5", type: 'image/png', href: `${favicon64}` },
+            { rel: 'shortcut icon', type: 'image/png', href: `${favicon64}` },
+          ]}            
+          script={[
+            /* Icons */
+            { src: '//code.iconify.design/1/1.0.0-rc1/iconify.min.js', type: 'image/png', sizes: "16x16" },
+          ]}            
+
           <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />          
           <link rel="manifest" href="/images/site.webmanifest" />
-          <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5" />
-          <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
-          <meta name="msapplication-TileColor" content="#da532c" />
-          <meta name="theme-color" content="#ffffff" />
-
-          <meta property="og:type" content="business.business" />
-          <meta property="og:title" content="This will be from the admin" />
-          <meta property="og:url" content="/" />
-          <meta property="og:image" content="/images/og-image.jpg" />
-
-          <script src="//code.iconify.design/1/1.0.0-rc1/iconify.min.js"></script>
+          
         </Helmet>        
           <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-closed">
           <Header data={data.navbarData} />
