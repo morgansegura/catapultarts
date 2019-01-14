@@ -9,8 +9,8 @@ logoImage:
   imageAlt: Logo Image
   imageLabel: My New Site Logo
   imageWidth: 30
-iconMedia:
-  image: /images/android-chrome-512x512.png
+  locationDesktop: left
+  locationMobile: center
 css:
   styles: |-
     .header {
