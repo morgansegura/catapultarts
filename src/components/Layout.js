@@ -11,7 +11,7 @@ const TemplateWrapper = ({ children }) => (
   <StaticQuery
     query={graphql`
       query HeadingQuery {
-        navbarData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "settings" } } }) {
+        settingsData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "settings" } } }) {
           edges {
             node {
               id
@@ -46,7 +46,7 @@ const TemplateWrapper = ({ children }) => (
             }
           }
         }
-        footerData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "menus" } } }) {
+        menuData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "menus" } } }) {
           edges {
             node {
               id
@@ -55,57 +55,63 @@ const TemplateWrapper = ({ children }) => (
         }
       }      
     `}
-  render={ data => (
+  render={ data => {
+    console.log(data)
+    const { frontmatter: preData } = data.settingsData.edges[0].node
+    return (
         <> 
-        {console.log(data)}
-        <Helmet>
-          <html lang="en" />
-          title={data.meta.title}
-          meta={[
-            {
-              name: "description",
-              content: `${data.meta.description}`
-            },
-            {
-              name: "keywords",
-              content: `${data.meta.keywords}`
-            },
-            {
-              name: "u2f-support",
-              content: "true" 
-            },
-            /*
-              http://ogp.me/  (Open Graph)
-            */
-          ]}            
-          link={[
-            /* Icons */
-            { rel: 'icon', type: 'image/png', sizes: "16x16", href: `${favicon16}` },
-            { rel: 'icon', type: 'image/png', sizes: "32x32", href: `${favicon32}` },
-            { rel: 'shortcut icon', type: 'image/png', href: `${favicon64}` },
-          { rel: 'apple-touch-icon', sizes: "180x180", href: `${favicon64}` },
-          ]}            
-          script={[
-            /* Icons */
-            { src: '//code.iconify.design/1/1.0.0-rc1/iconify.min.js', type: 'text/javascript'},
-          ]}
-          {!!CSS && CSS !== null ?
-            <style style="text/css">
+          <Helmet
+            title={preData.meta.title}
+            meta={[
               {
-                data.CSS
-              }
-            </style>
-          : null}
-        </Helmet>       
-          <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-closed">
-          <Header data={data.navbarData} />
-          <main className="main">
-            {children}
-          </main>
-          <Footer data={data.footerData} />
-        </div>
-        </>
-      )}
+                name: "description",
+                content: `${preData.meta.description}`
+              },
+              {
+                name: "keywords",
+                content: `${preData.meta.keywords}`
+              },
+              {
+                name: "u2f-support",
+                content: "true" 
+              },
+              /*
+                http://ogp.me/  (Open Graph)
+              */
+            ]}            
+            link={[
+              /* Icons */
+              { rel: 'icon', type: 'image/png', sizes: "16x16", href: `${preData.iconMedia.image}` },
+              { rel: 'icon', type: 'image/png', sizes: "32x32", href: `${preData.iconMedia.image}` },
+              { rel: 'shortcut icon', type: 'image/png', href: `${preData.iconMedia.image}` },
+              { rel: 'apple-touch-icon', sizes: "180x180", href: `${preData.iconMedia.image}` },
+            ]}            
+            script={[
+              /* Icons */
+              { src: '//code.iconify.design/1/1.0.0-rc1/iconify.min.js', type: 'text/javascript'},
+            ]}         
+            />
+
+            <Helmet>
+              {!!CSS && CSS !== null ?
+                <style style="text/css">
+                  {
+                    data.CSS
+                  }
+                </style>
+              : null}               
+            </Helmet>   
+
+            <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-closed">
+            <Header data={preData.logoImage} />
+            <main className="main">
+              {children}
+            </main>
+            <Footer data={data.footerData} />
+          </div>
+          </>
+        )}
+      }
     />
   )
 
