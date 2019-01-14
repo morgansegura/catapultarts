@@ -11,6 +11,12 @@ logoImage:
   imageWidth: 30
   locationDesktop: left
   locationMobile: center
+menuHeader:
+  menuItems:
+    - label: About
+      linkTitle: About Us
+      linkType: internal
+      linkURL: /about
 css:
   styles: |-
     .header {
