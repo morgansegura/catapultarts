@@ -164,7 +164,7 @@ collections:
   - name: "settings"
     label: "Settings"
     files:
-      - file: "src/pages/settings/navbar/index.md"
+      - file: "src/pages/navbar/index.md"
         label: "Navigation"
         name: "navbar"
         fields:

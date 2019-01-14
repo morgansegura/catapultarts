@@ -1,7 +1,7 @@
 ---
 templateKey: navbar
-logoImage:
-  image: /images/logo.svg
+logoImage: 
+  image:
   imageAlt: Catapult Arts
   imageWidth: 40
   imageLabel: Catapult Arts Logo
