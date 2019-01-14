@@ -11,17 +11,16 @@ const TemplateWrapper = ({ children }) => (
   <StaticQuery
     query={graphql`
       query HeadingQuery {
-        site {
-          siteMetadata {
-            title,
-            description
-          }
-        }
         navbarData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "settings" } } }) {
           edges {
             node {
               id
               frontmatter {
+                meta {
+                  title
+                  keywords
+                  description
+                }
                 logoImage {
                   image  {
                     childImageSharp {
@@ -33,6 +32,15 @@ const TemplateWrapper = ({ children }) => (
                   imageAlt
                   imageWidth
                   imageLabel
+                }
+                iconMedia {
+                  image  {
+                    childImageSharp {
+                      fixed(width: 180, height: 180) {
+                        ...GatsbyImageSharpFixed
+                      }
+                    }                    
+                  }                    
                 }
               }
             }
