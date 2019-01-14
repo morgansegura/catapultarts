@@ -38,13 +38,13 @@ exports.createPages = ({ actions, graphql }) => {
     const excludeArray = ['navbar', 'footer']
     // Filter out the footer, navbar, and meetups so we don't create pages for those
     const postOrPage = result.data.allMarkdownRemark.edges.filter((edge, i) => {
-      if (edge.node.frontmatter.templateKey === excludeArray[i]) {
-        return false;        
-      } 
-      // else {
-      //   // return !Boolean(edge.node.fields.slug.match(/^\/meetups\/.*$/));
-      //   console.log('No')
-      // }
+      // if (edge.node.frontmatter.templateKey === excludeArray[i]) {
+      //   return false;        
+      // } 
+      // // else {
+      // //   // return !Boolean(edge.node.fields.slug.match(/^\/meetups\/.*$/));
+      // //   console.log('No')
+      // // }
     });
 
     postOrPage.forEach(edge => {
@@ -137,37 +137,15 @@ exports.onCreateNode = async ({ node, actions, getNode, cache, store, createNode
   let fileNode
 
   fmImagesToRelative(node) // convert image paths for gatsby images
+  console.log(fmImagesToRelative(node))
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
-    console.log(node)
     createNodeField({
       name: `slug`,
       node,
       value,
     })
-
-    // // Attach thumbnail's ImageSharp node by public path if necessary
-    // if (typeof node.frontmatter.thumbnail === 'string') {
-    //   // Find absolute path of linked path
-    //   const pathToFile = path
-    //     .join(__dirname, 'static', node.frontmatter.thumbnail)
-    //     .split(path.sep)
-    //     .join('/');
-
-    //   // Find ID of File node
-    //   const fileNode = getNodes().find(n => n.absolutePath === pathToFile);
-
-    //   if (fileNode !== null) {
-    //     // Find ImageSharp node corresponding to the File node
-    //     const imageSharpNodeId = fileNode.children.find(n => n.endsWith('>> ImageSharp'));
-    //     const imageSharpNode = getNodes().find(n => n.id === imageSharpNodeId);
-
-    //     // Add ImageSharp node as child
-    //     createParentChildLink({ parent: node, child: imageSharpNode });
-    //   }
-    // }
-
   }
 
   if (node.internal && node.internal.type === `MoltinProduct`) {    
@@ -182,9 +160,7 @@ exports.onCreateNode = async ({ node, actions, getNode, cache, store, createNode
       createNodeId
     })
 
-    // console.log('After Filenode') 
     if (fileNode && fileNode.id) node.mainImage___NODE = fileNode.id
-    // console.log('Aftermath')
   }
 }
 

@@ -23,13 +23,13 @@ const TemplateWrapper = ({ children }) => (
               id
               frontmatter {
                 logoImage {
-                  image {
+                  image  {
                     childImageSharp {
                       fluid(maxWidth: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }                    
-                  }                  
+                  }             
                   imageAlt
                   imageWidth
                   imageLabel
@@ -47,14 +47,6 @@ const TemplateWrapper = ({ children }) => (
           edges {
             node {
               id
-              frontmatter {
-                socialLinks {
-                  image
-                  imageAlt
-                  label
-                  linkURL
-                }
-              }
             }
           }
         }

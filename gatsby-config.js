@@ -58,6 +58,7 @@ module.exports = {
         showSpinner: false,
       },
     },
+    'gatsby-transformer-sharp',
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
@@ -65,18 +66,12 @@ module.exports = {
         stripMetadata: true,
       },
     },
-    'gatsby-transformer-sharp',
-    // `gatsby-plugin-netlify-cms-paths`,
+    // `gatsby-plugin-sharp`,
     {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          {
-            resolve: 'gatsby-remark-relative-images',
-            options: {
-              name: 'uploads',
-            },
-          },
+          'gatsby-remark-relative-images',
           {
             resolve: 'gatsby-remark-images',
             options: {
