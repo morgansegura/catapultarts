@@ -1,6 +1,6 @@
 ---
 logoImage:
-  image: /images/android-chrome-512x512.png
+  image: /images/logo.png
   imageAlt: Catapult Arts Logo
   imageLabel: Catapult Arts
   imageWidth: 40
