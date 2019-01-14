@@ -13,10 +13,9 @@ const TemplateWrapper = ({ children }) => (
       query HeadingQuery {
         site {
           siteMetadata {
-            title,
-            description
+            title
           }
-        }     
+        }
         settingsData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "settings" } } }) {
           edges {
             node {

@@ -6,19 +6,19 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: metaData.title,
-    short_name: metaData.short_name,
-    copyright: metaData.copyright,    
-    siteUrl: metaData.siteUrl,
-    startUrl: metaData.startUrl,
-    pathPrefix: metaData.pathPrefix,
-    icons: metaData.icons,
-    rssFeed: metaData.rssFood,
-    siteFBAppID: metaData.siteFBAppID,
-    twitterHandle: metaData.twitterHandle,
-    googleAnalyticsId: metaData.googleAnalyticsId,
-    themeColor: metaData.themeColor,
-    backgroundColor: metaData.backgroundColor
+    title: metaData.setup.title,
+    short_name: metaData.setup.short_name,
+    copyright: metaData.setup.copyright,    
+    siteUrl: metaData.setup.siteUrl,
+    startUrl: metaData.setup.startUrl,
+    pathPrefix: metaData.setup.pathPrefix,
+    icons: metaData.setup.icons,
+    rssFeed: metaData.setup.rssFood,
+    siteFBAppID: metaData.setup.siteFBAppID,
+    twitterHandle: metaData.setup.twitterHandle,
+    googleAnalyticsId: metaData.setup.googleAnalyticsId,
+    themeColor: metaData.setup.themeColor,
+    backgroundColor: metaData.setup.backgroundColor
   },
 
   plugins: [
@@ -57,7 +57,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-131102503-1`,
+        trackingId: metaData.setup.googleAnalyticsId,
       },
     },
     {
@@ -117,14 +117,14 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: metaData.title,
-        short_name: metaData.short_name,
-        description: metaData.description,
-        start_url: metaData.startUrl,
-        background_color: metaData.short_name,
-        theme_color: metaData.themeColor,
+        name: metaData.setup.title,
+        short_name: metaData.setup.short_name,
+        description: metaData.setup.description,
+        start_url: metaData.setup.startUrl,
+        background_color: metaData.setup.short_name,
+        theme_color: metaData.setup.themeColor,
         display: 'standalone',
-        icons: metaData.icons,
+        icons: metaData.setup.icons,
         legacy: true,
       }
     },
