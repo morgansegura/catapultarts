@@ -171,13 +171,13 @@ collections:
         fields:
           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "settings" }       
           - {
-              label: "Override Meta Settings",
+              label: "Override Metadata",
               name: "meta",
               widget: "object",
               fields:
                 [
                   { label: "Title", name: "title", widget: "string", hint: "This title will be displayed in the <head> of your website." },
-                  { label: "Meta Keywords", name: "keywords", widget: "select", options: ["internal", "external"], hint: "Create strong meta keywords for your main page." },
+                  { label: "Meta Keywords", name: "keywords", widget: "string", hint: "Create strong meta keywords for your main page." },
                   { label: "Meta Description", name: "description", widget: "string", hint: "Create a good meta description for your main page." },
                 ],
             }
@@ -194,7 +194,27 @@ collections:
                   { label: "Location Desktop", name: "locationDesktop", widget: "select", options: ["left", "center", "right"], default: "left", hint: "Location of the logo in the header (Desktop)." },
                   { label: "Location Mobile", name: "locationMobile", widget: "select", options: ["left", "center", "right"], default: "center", hint: "Location of the logo in the header (Mobile)." },
                 ],
-            }
+            } 
+          - {
+              label: "Header Menu",
+              name: "menuHeader",
+              widget: "object",              
+              fields:
+                [
+                  {
+                    label: "Menu Items",
+                    name: "menuItems",
+                    widget: "list",              
+                    fields:
+                    [
+                      { label: "Label", name: "label", widget: "string", hint: "The visible text in this link." },
+                      { label: "Link Title", name: "linkTitle", widget: "string", hint: "The title attribute." },
+                      { label: "Link Type", name: "linkType", widget: "select", options: ["internal", "external"], hint: "Choose between internal and external." },
+                      { label: "Link URL", name: "linkURL", widget: "string", hint: "Use a relative URL (e.g. /about) if the link is an internal link. Otherwise, (e.g. https://google.com)" },
+                    ],
+                  }                  
+                ],
+            }                        
           - {
               label: "Custom Styles",
               name: "css",
@@ -204,73 +224,3 @@ collections:
                   { label: "CSS", name: "styles", widget: "text", hint: "Here you can add your own custom CSS. This will override default styles. You don't need <style> tags!" },
                 ],
             } 
-
-          # Create Menus in appropriate templates
-          # - {
-          #     label: "Menus",
-          #     name: "menus",
-          #     widget: "object",              
-          #     fields:
-          #       [
-          #         {
-          #           label: "Header Menu",
-          #           name: "menuHeader",
-          #           widget: "object",              
-          #           fields:
-          #             [
-          #               {
-          #                 label: "Menu Items",
-          #                 name: "menuItems",
-          #                 widget: "list",              
-          #                 fields:
-          #                   [
-          #                     { label: "Label", name: "label", widget: "string", hint: "The visible text in this link." },
-          #                     { label: "Link Title", name: "linkTitle", widget: "string", hint: "The title attribute." },
-          #                     { label: "Link Type", name: "linkType", widget: "select", options: ["internal", "external"], hint: "Choose between internal and external." },
-          #                     { label: "Link URL", name: "linkURL", widget: "string", hint: "Use a relative URL (e.g. /about) if the link is an internal link. Otherwise, (e.g. https://google.com)" },
-          #                   ],
-          #               } 
-          #             ],
-          #         },               
-          #         {
-          #           label: "Footer Menu",
-          #           name: "menuFooter",
-          #           widget: "object",              
-          #           fields:
-          #             [
-          #               {
-          #                 label: "Menu Items",
-          #                 name: "menuItems",
-          #                 widget: "list",              
-          #                 fields:
-          #                   [
-          #                     { label: "Label", name: "label", widget: "string", hint: "The visible text in this link." },
-          #                     { label: "Link Title", name: "linkTitle", widget: "string", hint: "The title attribute." },
-          #                     { label: "Link Type", name: "linkType", widget: "select", options: ["internal", "external"], hint: "Choose between internal and external." },
-          #                     { label: "Link URL", name: "linkURL", widget: "string", hint: "Use a relative URL (e.g. /about) if the link is an internal link. Otherwise, (e.g. https://google.com)" },
-          #                   ],
-          #               } 
-          #             ],
-          #         }                    
-          #         {
-          #           label: "Contact Info Menu",
-          #           name: "menuContactInfo",
-          #           widget: "object",              
-          #           fields:
-          #             [
-          #               {
-          #                 label: "Menu Items",
-          #                 name: "menuItems",
-          #                 widget: "list",              
-          #                 fields:
-          #                   [
-          #                     { label: "Label", name: "label", widget: "string", hint: "The visible text in this link." },
-          #                     { label: "Link Title", name: "linkTitle", widget: "string", hint: "The title attribute." },
-          #                     { label: "Link Type", name: "linkType", widget: "select", options: ["internal", "external"], hint: "Choose between internal and external." },
-          #                     { label: "Link URL", name: "linkURL", widget: "string", hint: "Use a relative URL (e.g. /about) if the link is an internal link. Otherwise, (e.g. https://google.com)" },
-          #                   ],
-          #               } 
-          #             ],
-          #         }                    
-          #       ],
-          #   }                        
