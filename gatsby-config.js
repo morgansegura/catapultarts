@@ -1,3 +1,4 @@
+const metaData = require('./src/data/setup')
 
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`
@@ -5,11 +6,21 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + WordPress Starter',
-    siteUrl: 'https://catapultarts.com/app',
-    description: 'If you don\'t know me by now, I doubt you\'ll ever know me. I won\'t win a Tony',
-    keywords: 'Gatsby.js, React.js, GraphQL, Netlify, NetlifyCMS, Gulp, PostCSS'
+    title: metaData.title,
+    short_name: metaData.short_name,
+    copyright: metaData.copyright,    
+    siteUrl: metaData.siteUrl,
+    startUrl: metaData.startUrl,
+    pathPrefix: metaData.pathPrefix,
+    icons: metaData.icons,
+    rssFeed: metaData.rssFood,
+    siteFBAppID: metaData.siteFBAppID,
+    twitterHandle: metaData.twitterHandle,
+    googleAnalyticsId: metaData.googleAnalyticsId,
+    themeColor: metaData.themeColor,
+    backgroundColor: metaData.backgroundColor
   },
+
   plugins: [
     'gatsby-plugin-react-helmet',
     {
@@ -106,27 +117,17 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: "Catapult Arts",
-        short_name: "catapult arts",
-        description: "web design, web development, social media marketing, search engine optimizaion, search engine marketing",
-        start_url: "https://www.catapultarts.com",
-        background_color: "#efefef",
-        theme_color: "red",
-        display: 'minimal-ui',
-        icons: [
-          {
-            src: '/logos/logo-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: '/logos/logo-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
-          }
-        ]
+        name: metaData.title,
+        short_name: metaData.short_name,
+        description: metaData.description,
+        start_url: metaData.startUrl,
+        background_color: metaData.short_name,
+        theme_color: metaData.themeColor,
+        display: 'standalone',
+        icons: metaData.icons,
+        legacy: true,
       }
-    },   
+    },
     // 'gatsby-plugin-offline',
     // `gatsby-plugin-netlify-cache`,
     // `gatsby-plugin-remove-serviceworker`,

@@ -11,6 +11,12 @@ const TemplateWrapper = ({ children }) => (
   <StaticQuery
     query={graphql`
       query HeadingQuery {
+        site {
+          siteMetadata {
+            title,
+            description
+          }
+        }     
         settingsData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "settings" } } }) {
           edges {
             node {
@@ -32,15 +38,6 @@ const TemplateWrapper = ({ children }) => (
                   imageAlt
                   imageWidth
                   imageLabel
-                }
-                iconMedia {
-                  image  {
-                    childImageSharp {
-                      fixed(width: 180, height: 180) {
-                        ...GatsbyImageSharpFixed
-                      }
-                    }                    
-                  }                    
                 }
               }
             }
@@ -78,14 +75,7 @@ const TemplateWrapper = ({ children }) => (
               /*
                 http://ogp.me/  (Open Graph)
               */
-            ]}            
-            link={[
-              /* Icons */
-              { rel: 'icon', type: 'image/png', sizes: "16x16", href: `${preData.iconMedia.image}` },
-              { rel: 'icon', type: 'image/png', sizes: "32x32", href: `${preData.iconMedia.image}` },
-              { rel: 'shortcut icon', type: 'image/png', href: `${preData.iconMedia.image}` },
-              { rel: 'apple-touch-icon', sizes: "180x180", href: `${preData.iconMedia.image}` },
-            ]}            
+            ]}         
             script={[
               /* Icons */
               { src: '//code.iconify.design/1/1.0.0-rc1/iconify.min.js', type: 'text/javascript'},
