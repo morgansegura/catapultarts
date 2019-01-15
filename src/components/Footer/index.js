@@ -24,9 +24,6 @@ const Footer = ({ children }) => (
                     linkURL           
                   }
                 }
-                css {
-                  styles
-                }
               }
             }
           }
@@ -35,7 +32,7 @@ const Footer = ({ children }) => (
     `}
     render={data => {
 
-        const { frontmatter: settingsData } = data.settingsData.edges[1].node
+        const { frontmatter: settingsData } = data.settingsData.edges[0].node
         const menuItems = settingsData.menuFooter.menuItems
 
         // console.log(menuItems)

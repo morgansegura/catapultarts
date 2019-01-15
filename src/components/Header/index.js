@@ -7,6 +7,7 @@ import PreviewCompatibleImage from '../PreviewCompatibleImage'
 // import AOS from 'aos'
 
 const Header = ({ children }) => (
+
   <StaticQuery
     query={graphql`
       query HeadingQuery {
@@ -51,28 +52,14 @@ const Header = ({ children }) => (
     `}
     render={data => {
 
-        const wrapper = document.getElementById("wrapper");
+      
 
-        window.onscroll = (e) => {
-            const header = document.getElementById("headerMain");
-            scrollFunction()
-            function scrollFunction() {
-                if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                    header.classList.add("fill");
-                    header.classList.remove("unfill");
-                } else {
-                    header.classList.remove("fill");
-                    header.classList.add("unfill");
-                }
-            }
-        }
-        // AOS
-        // AOS.init()
-      console.log(data)
-        const { frontmatter: settingsData } = data.settingsData.edges[0].node
+      const { frontmatter: settingsData } = data.settingsData.edges[1].node
         const menuItems = settingsData.menuHeader.menuItems
         const logoImage = settingsData.logoImage
         
+      console.log(menuItems)
+
         return (
             <header id="headerMain" className="header__main">
                 <div className="container">                

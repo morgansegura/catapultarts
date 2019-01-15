@@ -287,16 +287,7 @@ collections:
                     hint: "Adjust the link color."
                   }                
                 ],
-            }
-          - {            
-              label: "Custom Styles",
-              name: "css",
-              widget: "object",
-              fields:
-                [
-                  { label: "CSS", name: "styles", widget: "text", hint: "Here you can add your own custom CSS. This will override default styles but not admin inputs. You don't need <style> tags!" },
-                ],
-            }         
+            }        
 
     # Footer Settings
       - file: "src/pages/settings/footer.md"
@@ -363,16 +354,7 @@ collections:
                     hint: "Adjust the link color."
                   }                
                 ],
-            }
-          - {            
-              label: "Custom Styles",
-              name: "css",
-              widget: "object",
-              fields:
-                [
-                  { label: "CSS", name: "styles", widget: "text", hint: "Here you can add your own custom CSS. This will override default styles but not admin inputs. You don't need <style> tags!" },
-                ],
-            }             
+            }          
 
   # Documentation
   - name: "docs"

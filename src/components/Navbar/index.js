@@ -14,6 +14,26 @@ const Navbar = ({ menuItems }) => {
 
         superToggle(wrapper, 'mobile-nav--is-open', 'mobile-nav--is-closed')
     }
+    const initHeader = () => {
+        const wrapper = document.getElementById("wrapper");
+
+        window.onscroll = (e) => {
+            const header = document.getElementById("headerMain");
+            scrollFunction()
+            function scrollFunction() {
+                if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                    header.classList.add("fill");
+                    header.classList.remove("unfill");
+                } else {
+                    header.classList.remove("fill");
+                    header.classList.add("unfill");
+                }
+            }
+        // AOS
+        // AOS.init()
+        }
+    }
+    initHeader()
     return (
       <nav className="nav nav__main">  
         {!!menuItems ?
