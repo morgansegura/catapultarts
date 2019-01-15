@@ -1,7 +1,7 @@
 ---
 templateKey: docs
 title: Purple nurple
-slug: custom-pagers
+slug: custom-pages
 date: 2019-01-15T16:56:52.232Z
 description: >-
   In this documentation section you will learn how to create, update and delete
