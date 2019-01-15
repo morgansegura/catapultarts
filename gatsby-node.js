@@ -56,7 +56,7 @@ exports.createPages = ({ actions, graphql }) => {
       } else {
         pathName = edge.node.frontmatter.path || edge.node.fields.slug;
         component = path.resolve(`src/templates/${String(edge.node.frontmatter.templateKey)}.js`);
-
+        
         if (edge.node.frontmatter.templateKey === `blog`) {
           tags = edge.node.frontmatter.tags
         }

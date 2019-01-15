@@ -9,9 +9,9 @@ public_folder: images
 display_url: https://catapultarts.netlify.com/
 
 collections:
-  - name: "blog"
+  - name: "post"
     label: "Blog"
-    folder: "src/pages/blog"
+    folder: "src/pages/post"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
