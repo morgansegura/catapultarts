@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { CustomPageTemplate } from '../../templates/custom-page'
+import { CustomPageTemplate } from '../../templates/custom-pages'
 
 const CustomPagePreview = ({ entry, widgetFor }) => (
   <CustomPageTemplate

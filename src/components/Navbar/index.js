@@ -27,10 +27,8 @@ class Navbar extends Component {
             }
             // AOS
             // AOS.init()
-        }
-   
-    }
-
+        }   
+    } 
     toggleMobileNav() {
         const wrapper = document.getElementById("wrapper")
 
@@ -41,7 +39,7 @@ class Navbar extends Component {
         }
 
         superToggle(wrapper, 'mobile-nav--is-open', 'mobile-nav--is-closed')
-    }    
+    }   
 
     render() {
 
@@ -66,7 +64,7 @@ class Navbar extends Component {
                         ))}
                     </div>
                     : null}
-                <div className="nav__trigger" onClick={toggleMobileNav}>
+                <div className="nav__trigger" onClick={this.toggleMobileNav}>
                     <div className="nav__trigger--inner"></div>
                 </div>
             </nav>

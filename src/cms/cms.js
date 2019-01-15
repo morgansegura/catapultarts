@@ -1,14 +1,14 @@
 import CMS from 'netlify-cms'
 import * as ColorWidget from "netlify-cms-widget-color";
 
-import AboutPagePreview from "./preview-templates/AboutPagePreview";
 import HomePagePreview from "./preview-templates/HomePagePreview";
-import FooterPreview from "./preview-templates/FooterPreview";
 import BlogPostPreview from './preview-templates/BlogPostPreview'
+import CustomPagePreview from './preview-templates/CustomPagePreview'
+import DocumentationPreview from './preview-templates/DocumentationPreview'
 
-CMS.registerPreviewTemplate("footer", FooterPreview);
-CMS.registerPreviewTemplate("about", AboutPagePreview);
 CMS.registerPreviewTemplate("home", HomePagePreview);
 CMS.registerPreviewTemplate('blog', BlogPostPreview)
+CMS.registerPreviewTemplate('custom-pages', CustomPagePreview)
+CMS.registerPreviewTemplate('docs-post', DocumentationPreview)
 
 CMS.registerWidget("color", ColorWidget.Control);

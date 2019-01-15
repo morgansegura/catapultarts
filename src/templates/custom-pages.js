@@ -26,7 +26,7 @@ export const CustomPageTemplate = ({
                             {title}
                         </h1>
                         <p>{description}</p>
-                        <PostContent content={content} />
+                        <CustomPageContent content={content} />
                         {tags && tags.length ? (
                             <div style={{ marginTop: `4rem` }}>
                                 <h4>Tags</h4>
