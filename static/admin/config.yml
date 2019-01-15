@@ -6,7 +6,7 @@ publish_mode: editorial_workflow
 media_folder: static/images
 public_folder: images
 
-display_url: https://catapultarts.netlify.com/
+display_url: https://cataputarts.com
 
 collections:
   - name: "blog"
@@ -23,8 +23,8 @@ collections:
       - {label: "Tags", name: "tags", widget: "list"}
 
   # Create Custom Pages
-  - name: "customPages"
-    label: "Custom Pages"
+  - name: "custom-pages"
+    label: "Pages (Custom)"
     folder: "src/pages/custom"
     create: true
     slug: "{{slug}}"
@@ -35,24 +35,9 @@ collections:
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
-
-  # Documentation
-  - name: "docs"
-    label: "Documentation"
-    folder: "src/pages/docs"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "docs-post"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      
+            
   - name: "pages"
-    label: "Theme Pages"
-    create: true
+    label: "Pages (Theme)"
     files:
       - file: "src/pages/about/index.md"
         label: "About"
@@ -207,7 +192,7 @@ collections:
               widget: "object",
               fields:
                 [
-                  { label: "Title", name: "title", widget: "string", hint: "This title will be displayed in the <head> of your website." },
+                  { label: "Title", name: "title", widget: "string", hint: "This title will be displayed in the <head> of your website." },             
                   { label: "Meta Keywords", name: "keywords", widget: "string", hint: "Create strong meta keywords for your main page." },
                   { label: "Meta Description", name: "description", widget: "string", hint: "Create a good meta description for your main page." },
                 ],
@@ -386,3 +371,17 @@ collections:
                   { label: "CSS", name: "styles", widget: "text", hint: "Here you can add your own custom CSS. This will override default styles but not admin inputs. You don't need <style> tags!" },
                 ],
             }             
+
+  # Documentation
+  - name: "docs"
+    label: "Docs"
+    folder: "src/pages/docs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "docs-post"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}            
