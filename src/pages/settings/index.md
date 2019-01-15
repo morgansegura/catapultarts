@@ -17,6 +17,12 @@ menuHeader:
       linkTitle: About Us
       linkType: internal
       linkURL: /about
+menuFooter:
+  menuItems:
+    - label: About
+      linkTitle: About Us
+      linkType: internal
+      linkURL: /about
 css:
   styles: |-
     .header {
