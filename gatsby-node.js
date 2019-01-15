@@ -38,10 +38,11 @@ exports.createPages = ({ actions, graphql }) => {
     const excludeArray = ['excluded-templates']
     const postOrPage = result.data.allMarkdownRemark.edges.filter((edge, i) => {
       if (edge.node.frontmatter.templateKey === excludeArray[i]) {
-        return false;        
+        return false;
       } 
       // else {
-      //   return !Boolean(edge.node.fields.slug.match(/^\/settings\/.*$/));
+      //   // return !Boolean(edge.node.fields.slug.match(/^\/settings\/.*$/));
+        
       // }
     });
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
-import BlogLayout from '../components/Layout'
+import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
 export const DocumentationTemplate = ({
@@ -58,7 +58,7 @@ const Documentation = ({ data }) => {
     const { markdownRemark: post } = data
 
     return (
-        <DocumentationLayout>
+        <Layout>
             <DocumentationTemplate
                 content={post.html}
                 contentComponent={HTMLContent}
@@ -73,7 +73,7 @@ const Documentation = ({ data }) => {
                 }
                 title={post.frontmatter.title}
             />
-        </DocumentationLayout>
+        </Layout>
     )
 }
 
