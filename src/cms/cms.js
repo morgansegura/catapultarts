@@ -10,4 +10,5 @@ CMS.registerPreviewTemplate("footer", FooterPreview);
 CMS.registerPreviewTemplate("about", AboutPagePreview);
 CMS.registerPreviewTemplate("home", HomePagePreview);
 CMS.registerPreviewTemplate('blog', BlogPostPreview)
+
 CMS.registerWidget("color", ColorWidget.Control);

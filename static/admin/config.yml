@@ -21,9 +21,36 @@ collections:
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
+  # Create Custom Pages
+  - name: "customPages"
+    label: "Custom Pages"
+    folder: "src/pages/custom"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "custon-pages"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list"}
+
+  # Documentation
+  - name: "docs"
+    label: "Documentation"
+    folder: "src/pages/docs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "docs"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list"}
       
   - name: "pages"
-    label: "Pages"
+    label: "Theme Pages"
     create: true
     files:
       - file: "src/pages/about/index.md"
@@ -160,16 +187,19 @@ collections:
                   { label: "Description", name: "description", widget: "string" },
                 ],
             }
+        
   # Settings Section
   - name: "settings"
     label: "Settings"
+    # folder: "src/pages/settings"
+    slug: "{{slug}}"  
     files:
     # Site Settings (Logo and Menu)
       - file: "src/pages/settings/index.md"
         label: "Site Settings"
-        name: "settings"
+        name: "settings-index"
         fields:
-          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "settings" }       
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "settings-page" }       
           - {
               label: "Override Metadata",
               name: "meta",
@@ -214,18 +244,23 @@ collections:
                     ],
                   }                  
                 ],
-            }
-          - {
-              label: "Footer Appearance",
-              name: "footer",
+            } 
+          - {            
+              label: "Custom Styles",
+              name: "css",
               widget: "object",
-              fields: {
+              fields:
                 [
-                  { label: "Menu Color", name: "menuColor", widget: "color", hint: "Choose the color for the menu."}
-                  { label: "Menu Hover Color", name: "menuHoverColor", widget: "color", hint: "Choose the color for the menu hover state."}
-                ]
-              }
-            }
+                  { label: "CSS", name: "styles", widget: "text", hint: "Here you can add your own custom CSS. This will override default styles but not admin inputs. You don't need <style> tags!" },
+                ],
+            } 
+
+    # Footer Settings
+      - file: "src/pages/settings/footer.md"
+        label: "Footer Settings"
+        name: "settings-footer"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "settings-page" }
           - {
               label: "Footer Menu",
               name: "menuFooter",
@@ -245,13 +280,52 @@ collections:
                     ],
                   }                  
                 ],
-            }                        
+            }
           - {
+              label: "Footer",
+              name: "footer",
+              widget: "object",              
+              fields:
+                [
+                  { label: "Background Color", 
+                    name: "bgColor", 
+                    widget: "color", 
+                    presets: ['red', 'green', 'blue'], 
+                    default: 'white',                    
+                    hint: "Adjust the background-color of the <footer> area."
+                  },
+                  { 
+                    label: "Text Color", 
+                    name: "textColor", 
+                    widget: "color", 
+                    presets: ['red', 'green', 'blue'], 
+                    default: 'black',
+                    hint: "Adjust the font color."
+                  },         
+                  { 
+                    label: "Link Color", 
+                    name: "linkColor", 
+                    widget: "color", 
+                    presets: ['red', 'green', 'blue'], 
+                    default: 'blue',
+                    hint: "Adjust the link color."
+                  } ,               
+                  { 
+                    label: "Link Hover Color", 
+                    name: "linkHoverColor", 
+                    widget: "color", 
+                    presets: ['red', 'green', 'blue'], 
+                    default: 'teal',
+                    hint: "Adjust the link color."
+                  }                
+                ],
+            }
+          - {            
               label: "Custom Styles",
               name: "css",
               widget: "object",
               fields:
                 [
-                  { label: "CSS", name: "styles", widget: "markdwn", hint: "Here you can add your own custom CSS. This will override default styles. You don't need <style> tags!" },
+                  { label: "CSS", name: "styles", widget: "text", hint: "Here you can add your own custom CSS. This will override default styles but not admin inputs. You don't need <style> tags!" },
                 ],
-            } 
+            }             

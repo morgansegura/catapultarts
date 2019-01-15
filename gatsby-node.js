@@ -35,14 +35,13 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    const excludeArray = ['settings']
+    const excludeArray = ['excluded-templates']
     const postOrPage = result.data.allMarkdownRemark.edges.filter((edge, i) => {
       if (edge.node.frontmatter.templateKey === excludeArray[i]) {
         return false;        
       } 
       // else {
-      //   // return !Boolean(edge.node.fields.slug.match(/^\/meetups\/.*$/));
-      //   console.log('No')
+      //   return !Boolean(edge.node.fields.slug.match(/^\/settings\/.*$/));
       // }
     });
 
@@ -131,7 +130,6 @@ exports.createPages = ({ actions, graphql }) => {
 
 exports.onCreateNode = async ({ node, actions, getNode, cache, store, createNodeId }) => {
   const { createNodeField, createNode } = actions
-  const { frontmatter } = node
   
   let fileNode
 
