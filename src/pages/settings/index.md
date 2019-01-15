@@ -25,7 +25,7 @@ menuFooter:
       linkURL: /about
 css:
   styles: |-
-    .header {
+    .header__main {
         background-color: black !important;
     }
 ---
