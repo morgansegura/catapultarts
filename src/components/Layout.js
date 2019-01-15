@@ -93,11 +93,11 @@ const TemplateWrapper = ({ children }) => (
             </Helmet>   
 
             <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-closed">
-          <Header data={preData} />
+          <Header menuData={preData} />
             <main className="main">
               {children}
             </main>
-            <Footer data={data.footerData} />
+            <Footer menuData={data.footerData} />
           </div>
           </>
         )}
