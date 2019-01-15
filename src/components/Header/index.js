@@ -27,8 +27,7 @@ class Header extends Component {
     }
 
     render() {
-        const { data } = this.props;
-        // const { menuItems } = data.menuItems
+        const data = this.props;
         // Don't forget to add the logo location options with styles
         console.log(data)
         return (
@@ -41,11 +40,9 @@ class Header extends Component {
                                 <PreviewCompatibleImage className="hello" imageInfo={data.logoImage}/>
                                 :                            
                                 <h2 className="title">{data.logoImage.imageLabel && data.logoImage.imageLabel}</h2>
-                                :
-                                null
-                            }
+                            : null }
                         </Link>
-                        <Navbar />
+                        <Navbar menuItems={data.menu} />
                     </div>
                 </div>
             </header>

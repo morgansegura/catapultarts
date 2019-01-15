@@ -38,6 +38,14 @@ const TemplateWrapper = ({ children }) => (
                   imageWidth
                   imageLabel
                 }
+                menuHeader {
+                  menuItems {
+                    label
+                    linkTitle
+                    linkType
+                    linkURL           
+                  }
+                }
               }
             }
           }
@@ -52,9 +60,8 @@ const TemplateWrapper = ({ children }) => (
       }      
     `}
   render={ data => {
-    console.log(data)
     const { frontmatter: preData } = data.settingsData.edges[0].node
-
+    // console.log(preData.menuHeader)
     return (
         <> 
           <Helmet
@@ -93,12 +100,12 @@ const TemplateWrapper = ({ children }) => (
             </Helmet>   
 
             <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-closed">
-          <Header menuData={preData} />
-            <main className="main">
-              {children}
-            </main>
-            <Footer menuData={data.footerData} />
-          </div>
+              <Header menu={preData.menuHeader.menuItems} logoImage={preData.logoImage} />
+              <main className="main">
+                {children}
+              </main>
+              <Footer />
+            </div>
           </>
         )}
       }

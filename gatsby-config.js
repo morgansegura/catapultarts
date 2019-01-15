@@ -66,7 +66,7 @@ module.exports = {
         // Setting a color is optional.
         color: `tomato`,
         // Disable the loading spinner.
-        showSpinner: false,
+        showSpinner: true,
       },
     },
     'gatsby-transformer-sharp',
@@ -124,7 +124,7 @@ module.exports = {
         background_color: metaData.setup.short_name,
         theme_color: metaData.setup.themeColor,
         display: 'standalone',
-        icons: metaData.setup.icons,
+        icon: metaData.setup.icons,
         legacy: true,
       }
     },
