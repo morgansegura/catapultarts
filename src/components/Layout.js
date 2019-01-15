@@ -46,6 +46,9 @@ const TemplateWrapper = ({ children }) => (
                     linkURL           
                   }
                 }
+                css {
+                  styles
+                }
               }
             }
           }
@@ -90,10 +93,10 @@ const TemplateWrapper = ({ children }) => (
             />
 
             <Helmet>
-              {!!CSS && CSS !== null ?
-                <style style="text/css">
+              {!!preData.css.styles && preData.css.styles !== null ?
+                <style rel="stylesheet" style="text/css">
                   {
-                    data.CSS
+                    preData.css.styles
                   }
                 </style>
               : null}               

@@ -241,6 +241,6 @@ collections:
               widget: "object",
               fields:
                 [
-                  { label: "CSS", name: "styles", widget: "text", hint: "Here you can add your own custom CSS. This will override default styles. You don't need <style> tags!" },
+                  { label: "CSS", name: "styles", widget: "markdwn", hint: "Here you can add your own custom CSS. This will override default styles. You don't need <style> tags!" },
                 ],
             } 
