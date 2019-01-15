@@ -1,14 +1,58 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby'
 import { Link } from 'gatsby';
 import Navbar from '../Navbar'
 import PreviewCompatibleImage from '../PreviewCompatibleImage'
 
 // import AOS from 'aos'
 
-class Header extends Component {    
+const Header = ({ children }) => (
+  <StaticQuery
+    query={graphql`
+      query HeadingQuery {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+        settingsData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "settings" } } }) {
+          edges {
+            node {
+              id
+              frontmatter {
+                logoImage {
+                  image  {
+                    childImageSharp {
+                      fluid(maxWidth: 100) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }                    
+                  }                             
+                  imageAlt
+                  imageWidth
+                  imageLabel
+                }
+                menuHeader {
+                  menuItems {
+                    label
+                    linkTitle
+                    linkType
+                    linkURL           
+                  }
+                }
+                css {
+                  styles
+                }
+              }
+            }
+          }
+        }
+      }      
+    `}
+    render={data => {
 
-    componentDidMount() {
         const wrapper = document.getElementById("wrapper");
+
         window.onscroll = (e) => {
             const header = document.getElementById("headerMain");
             scrollFunction()
@@ -24,31 +68,30 @@ class Header extends Component {
         }
         // AOS
         // AOS.init()
-    }
-
-    render() {
-        const data = this.props;
-        // Don't forget to add the logo location options with styles
-        // console.log(data)
+      console.log(data)
+        const { frontmatter: settingsData } = data.settingsData.edges[0].node
+        const menuItems = settingsData.menuHeader.menuItems
+        const logoImage = settingsData.logoImage
+        
         return (
             <header id="headerMain" className="header__main">
                 <div className="container">                
                     <div className={`header__main__inner`}>
                         <Link className="logo" to="/" title="">
-                            {!!data.logoImage ?
-                                data.logoImage !== null ?
-                                <PreviewCompatibleImage className="hello" imageInfo={data.logoImage}/>
+                            {!!logoImage ?
+                                logoImage !== null ?
+                                <PreviewCompatibleImage className="hello" imageInfo={logoImage}/>
                                 :                            
-                                <h2 className="title">{data.logoImage.imageLabel && data.logoImage.imageLabel}</h2>
+                                <h2 className="title">{logoImage.imageLabel && logoImage.imageLabel}</h2>
                             : null }
                         </Link>
-                        <Navbar menuItems={data.menu} />
+                        <Navbar menuItems={menuItems} />
                     </div>
                 </div>
             </header>
-        );
-    }
-}
+        )}}
+    />
+)
 
 
 export default Header;

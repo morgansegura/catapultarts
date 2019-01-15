@@ -10,7 +10,7 @@ import '../assets/css/styles.css'
 const TemplateWrapper = ({ children }) => (
   <StaticQuery
     query={graphql`
-      query HeadingQuery {
+      query TemplateQuery {
         site {
           siteMetadata {
             title
@@ -26,34 +26,6 @@ const TemplateWrapper = ({ children }) => (
                   keywords
                   description
                 }
-                logoImage {
-                  image  {
-                    childImageSharp {
-                      fluid(maxWidth: 100) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }                    
-                  }                             
-                  imageAlt
-                  imageWidth
-                  imageLabel
-                }
-                menuHeader {
-                  menuItems {
-                    label
-                    linkTitle
-                    linkType
-                    linkURL           
-                  }
-                }
-                menuFooter {
-                  menuItems {
-                    label
-                    linkTitle
-                    linkType
-                    linkURL           
-                  }
-                }
                 css {
                   styles
                 }
@@ -61,18 +33,11 @@ const TemplateWrapper = ({ children }) => (
             }
           }
         }
-        menuData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "menus" } } }) {
-          edges {
-            node {
-              id
-            }
-          }
-        }
       }      
     `}
   render={ data => {
-    const { frontmatter: preData } = data.settingsData.edges[0].node
-    console.log(preData)
+    const { frontmatter: preData } = data.settingsData.edges[2].node
+    // console.log(data)
     return (
         <> 
           <Helmet
@@ -111,11 +76,11 @@ const TemplateWrapper = ({ children }) => (
             </Helmet>   
 
             <div id="wrapper" className="wrapper is--mobile-nav mobile-nav--is-closed">
-              <Header menu={preData.menuHeader.menuItems} logoImage={preData.logoImage} />
+              <Header />
               <main className="main">
                 {children}
               </main>
-              <Footer menuItems={preData.menuFooter.menuItems} />
+              <Footer />
             </div>
           </>
         )}
