@@ -2,10 +2,10 @@ import React, { Component } from "react"
 import get from 'lodash/get'
 import PropTypes from 'prop-types'
 import { Link, graphql } from "gatsby"
-import Layout from '../components/Layout'
+import BlogLayout from '../components/Layout'
 import { limitByWord } from '../utils/helpers'
 
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
+// import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 // import Hero from '../components/Hero'
 // import config from '../data/siteConfig'
 
@@ -27,7 +27,7 @@ class BlogPage extends Component {
         console.log(data)
 
         return (
-            <Layout>
+            <BlogLayout>
                 <section className="section section__hero bg vh--half bg--peach-gold-rtl-45">
                     <div id="hero" className="hero container buffer--y-lg">
                         <div>
@@ -101,7 +101,7 @@ class BlogPage extends Component {
                         </div>
                     </div>
                 </section>
-            </Layout>
+            </BlogLayout>
         )
     }
 }

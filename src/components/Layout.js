@@ -72,7 +72,7 @@ const TemplateWrapper = ({ children }) => (
     `}
   render={ data => {
     const { frontmatter: preData } = data.settingsData.edges[0].node
-    // console.log(preData.menuHeader)
+    console.log(preData)
     return (
         <> 
           <Helmet

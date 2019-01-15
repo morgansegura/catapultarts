@@ -9,9 +9,9 @@ public_folder: images
 display_url: https://catapultarts.netlify.com/
 
 collections:
-  - name: "post"
+  - name: "blog"
     label: "Blog"
-    folder: "src/pages/post"
+    folder: "src/pages/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -212,20 +212,23 @@ collections:
                   { label: "Meta Description", name: "description", widget: "string", hint: "Create a good meta description for your main page." },
                 ],
             }
-          - {
-              label: "Logo",
-              name: "logoImage",
+          - {            
+              label: "Custom Styles",
+              name: "css",
               widget: "object",
               fields:
                 [
-                  { label: "Image", name: "image", widget: "image", hint: "Upload an image. Leave blank to display text." },
-                  { label: "Image Description", name: "imageAlt", widget: "string", hint: "(SEO) The Alt tage for this image." },                  
-                  { label: "Image Width", name: "imageWidth", widget: "number", default: 40, valueType: "int", hint: "The width of your logo in the header in pixels. Default: 40px" },
-                  { label: "Image Label", name: "imageLabel", widget: "string", hint: "This text will show up if there is no image." },
-                  { label: "Location Desktop", name: "locationDesktop", widget: "select", options: ["left", "center", "right"], default: "left", hint: "Location of the logo in the header (Desktop)." },
-                  { label: "Location Mobile", name: "locationMobile", widget: "select", options: ["left", "center", "right"], default: "center", hint: "Location of the logo in the header (Mobile)." },
+                  { label: "CSS", name: "styles", widget: "text", hint: "Here you can add your own custom CSS. This will override default styles but not admin inputs. You don't need <style> tags!" },
                 ],
             } 
+
+
+    # Header Settings
+      - file: "src/pages/settings/header.md"
+        label: "Header Settings"
+        name: "settings-header"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "settings-page" }
           - {
               label: "Header Menu",
               name: "menuHeader",
@@ -246,6 +249,59 @@ collections:
                   }                  
                 ],
             } 
+          - {
+              label: "Logo",
+              name: "logoImage",
+              widget: "object",
+              fields:
+                [
+                  { label: "Image", name: "image", widget: "image", hint: "Upload an image. Leave blank to display text." },
+                  { label: "Image Description", name: "imageAlt", widget: "string", hint: "(SEO) The Alt tage for this image." },                  
+                  { label: "Image Width", name: "imageWidth", widget: "number", default: 40, valueType: "int", hint: "The width of your logo in the header in pixels. Default: 40px" },
+                  { label: "Image Label", name: "imageLabel", widget: "string", hint: "This text will show up if there is no image." },
+                  { label: "Location Desktop", name: "locationDesktop", widget: "select", options: ["left", "center", "right"], default: "left", hint: "Location of the logo in the header (Desktop)." },
+                  { label: "Location Mobile", name: "locationMobile", widget: "select", options: ["left", "center", "right"], default: "center", hint: "Location of the logo in the header (Mobile)." },
+                ],
+            }             
+          - {
+              label: "Header Settings",
+              name: "header",
+              widget: "object",              
+              fields:
+                [
+                  { label: "Background Color", 
+                    name: "bgColor", 
+                    widget: "color", 
+                    presets: ['red', 'green', 'blue'], 
+                    default: 'white',                    
+                    hint: "Adjust the background-color of the <footer> area."
+                  },
+                  { 
+                    label: "Text Color", 
+                    name: "textColor", 
+                    widget: "color", 
+                    presets: ['red', 'green', 'blue'], 
+                    default: 'black',
+                    hint: "Adjust the font color."
+                  },         
+                  { 
+                    label: "Link Color", 
+                    name: "linkColor", 
+                    widget: "color", 
+                    presets: ['red', 'green', 'blue'], 
+                    default: 'blue',
+                    hint: "Adjust the link color."
+                  } ,               
+                  { 
+                    label: "Link Hover Color", 
+                    name: "linkHoverColor", 
+                    widget: "color", 
+                    presets: ['red', 'green', 'blue'], 
+                    default: 'teal',
+                    hint: "Adjust the link color."
+                  }                
+                ],
+            }
           - {            
               label: "Custom Styles",
               name: "css",
@@ -254,7 +310,7 @@ collections:
                 [
                   { label: "CSS", name: "styles", widget: "text", hint: "Here you can add your own custom CSS. This will override default styles but not admin inputs. You don't need <style> tags!" },
                 ],
-            } 
+            }         
 
     # Footer Settings
       - file: "src/pages/settings/footer.md"
