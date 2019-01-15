@@ -6,4 +6,4 @@ description: This is a list of authors
 tags:
   - authors
 ---
-Some authors write, we enlighten
+Some authors write, others enlighten
