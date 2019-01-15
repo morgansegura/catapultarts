@@ -58,23 +58,22 @@ const Documentation = ({ data }) => {
     const { markdownRemark: post } = data
 
     return (
-        <BlogLayout>
+        <DocumentationLayout>
             <DocumentationTemplate
                 content={post.html}
                 contentComponent={HTMLContent}
                 description={post.frontmatter.description}
                 helmet={
                     <Helmet
-                        titleTemplate="%s | Blog"
+                        titleTemplate="%s | Documentation"
                     >
                         <title>{`${post.frontmatter.title}`}</title>
                         <meta name="description" content={`${post.frontmatter.description}`} />
                     </Helmet>
                 }
-                tags={post.frontmatter.tags}
                 title={post.frontmatter.title}
             />
-        </BlogLayout>
+        </DocumentationLayout>
     )
 }
 
@@ -95,7 +94,6 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         description
-        tags
       }
     }
   }
