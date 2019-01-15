@@ -29,7 +29,7 @@ class Header extends Component {
     render() {
         const data = this.props;
         // Don't forget to add the logo location options with styles
-        console.log(data)
+        // console.log(data)
         return (
             <header id="headerMain" className="header__main">
                 <div className="container">                

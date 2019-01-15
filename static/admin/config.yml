@@ -216,6 +216,17 @@ collections:
                 ],
             }
           - {
+              label: "Footer Appearance",
+              name: "footer",
+              widget: "object",
+              fields: {
+                [
+                  { label: "Menu Color", name: "menuColor", widget: "color", hint: "Choose the color for the menu."}
+                  { label: "Menu Hover Color", name: "menuHoverColor", widget: "color", hint: "Choose the color for the menu hover state."}
+                ]
+              }
+            }
+          - {
               label: "Footer Menu",
               name: "menuFooter",
               widget: "object",              

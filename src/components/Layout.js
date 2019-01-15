@@ -46,6 +46,14 @@ const TemplateWrapper = ({ children }) => (
                     linkURL           
                   }
                 }
+                menuFooter {
+                  menuItems {
+                    label
+                    linkTitle
+                    linkType
+                    linkURL           
+                  }
+                }
                 css {
                   styles
                 }
@@ -107,7 +115,7 @@ const TemplateWrapper = ({ children }) => (
               <main className="main">
                 {children}
               </main>
-              <Footer />
+              <Footer menuItems={preData.menuFooter.menuItems} />
             </div>
           </>
         )}
