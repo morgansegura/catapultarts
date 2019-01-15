@@ -5,9 +5,6 @@ meta:
   keywords: 'New website, awesome web app, fun, cool, flexible'
   title: My new website
 css:
-  styles: |-
-    .header__main {
-        background-color: black !important;
-    }
+  styles: ''
 ---
 
