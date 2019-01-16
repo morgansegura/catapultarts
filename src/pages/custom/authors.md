@@ -1,5 +1,5 @@
 ---
-templateKey: custom-pages
+templateKey: custom
 title: Authors
 date: 2019-01-15T20:15:39.801Z
 description: This is a list of authors

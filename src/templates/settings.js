@@ -6,7 +6,7 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
-export const CustomPageTemplate = ({
+export const SettingsTemplate = ({
     content,
     contentComponent,
     description,
@@ -14,7 +14,7 @@ export const CustomPageTemplate = ({
     title,
     helmet,
 }) => {
-    const CustomPageContent = contentComponent || Content
+    const SettingsContent = contentComponent || Content
 
     return (
         <section className="section">
@@ -26,7 +26,7 @@ export const CustomPageTemplate = ({
                             {title}
                         </h1>
                         <p>{description}</p>
-                        <CustomPageContent content={content} />
+                        <SettingsContent content={content} />
                         {tags && tags.length ? (
                             <div style={{ marginTop: `4rem` }}>
                                 <h4>Tags</h4>
@@ -46,7 +46,7 @@ export const CustomPageTemplate = ({
     )
 }
 
-CustomPageTemplate.propTypes = {
+SettingsTemplate.propTypes = {
     content: PropTypes.node.isRequired,
     contentComponent: PropTypes.func,
     description: PropTypes.string,
@@ -54,40 +54,39 @@ CustomPageTemplate.propTypes = {
     helmet: PropTypes.object,
 }
 
-const CustomPage = ({ data }) => {
+const Settings = ({ data }) => {
     const { markdownRemark: post } = data
 
     return (
         <Layout>
-            <CustomPageTemplate
+            <SettingsTemplate
                 content={post.html}
                 contentComponent={HTMLContent}
                 description={post.frontmatter.description}
                 helmet={
                     <Helmet
-                        titleTemplate="%s | Page"
+                        titleTemplate="%s | Settings"
                     >
                         <title>{`${post.frontmatter.title}`}</title>
                         <meta name="description" content={`${post.frontmatter.description}`} />
                     </Helmet>
                 }
-                tags={post.frontmatter.tags}
                 title={post.frontmatter.title}
             />
         </Layout>
     )
 }
 
-CustomPage.propTypes = {
+Settings.propTypes = {
     data: PropTypes.shape({
         markdownRemark: PropTypes.object,
     }),
 }
 
-export default CustomPage
+export default Settings
 
 export const pageQuery = graphql`
-  query CustomPageByID($id: String!) {
+  query SettingsByID($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       html

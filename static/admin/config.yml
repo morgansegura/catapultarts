@@ -9,13 +9,13 @@ public_folder: images
 display_url: https://cataputarts.com
 
 collections:
-  - name: "blog"
+  - name: "post"
     label: "Blog"
-    folder: "src/pages/blog"
+    folder: "src/pages/post"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "post"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "text"}
@@ -23,13 +23,13 @@ collections:
       - {label: "Tags", name: "tags", widget: "list"}
 
   # Create Custom Pages
-  - name: "custom-pages"
+  - name: "custom"
     label: "Pages (Custom)"
     folder: "src/pages/custom"
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "custom-pages"}
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "custom"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime", required: false}
       - {label: "Description", name: "description", widget: "text"}
@@ -305,7 +305,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "docs-post"}
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "docs"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Slug", name: "slug", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import SettingsTemplate from "../../components/Settings";
+import SettingsTemplate from "../../templates/settings";
 
 const SettingsPreview = ({ entry }) => {
   const data = entry.getIn(["data"]).toJS();

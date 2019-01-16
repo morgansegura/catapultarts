@@ -35,15 +35,14 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    const excludeArray = ['excluded-templates']
+    const excludeArray = ['settings']
     const postOrPage = result.data.allMarkdownRemark.edges.filter((edge, i) => {
       if (edge.node.frontmatter.templateKey === excludeArray[i]) {
         return false;
-      } 
-      // else {
-      //   // return !Boolean(edge.node.fields.slug.match(/^\/settings\/.*$/));
-        
-      // }
+      } else {
+        // return !Boolean(edge.node.fields.slug.match(/^\/settings\/.*$/)); 
+        return edge
+      }
     });
 
     postOrPage.forEach(edge => {
@@ -53,15 +52,21 @@ exports.createPages = ({ actions, graphql }) => {
         pathName = "/";
         component = path.resolve(`src/pages/index.js`);
 
+      } else if (edge.node.frontmatter.templateKey === "custom") {
+        pathName = edge.node.fields.slug.replace('/custom/', '/')
+        component = path.resolve(`src/templates/custom.js`);
+
       } else {
-        pathName = edge.node.frontmatter.path || edge.node.fields.slug;
+        pathName = edge.node.fields.slug;
         component = path.resolve(`src/templates/${String(edge.node.frontmatter.templateKey)}.js`);
         
         if (edge.node.frontmatter.templateKey === `blog`) {
           tags = edge.node.frontmatter.tags
         }
       }
+
       const id = edge.node.id;
+
       createPage({
         path: pathName,
         component,
@@ -136,7 +141,7 @@ exports.onCreateNode = async ({ node, actions, getNode, cache, store, createNode
 
   fmImagesToRelative(node) // convert image paths for gatsby images
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `MarkdownRemark`) {    
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,

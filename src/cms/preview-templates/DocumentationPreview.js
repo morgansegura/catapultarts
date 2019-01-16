@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { DocumentationTemplate } from '../../templates/docs-post'
+import { DocumentationTemplate } from '../../templates/docs'
 
 const DocumentationPreview = ({ entry, widgetFor }) => (
   <DocumentationTemplate
