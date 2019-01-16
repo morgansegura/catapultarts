@@ -11,13 +11,11 @@ menuHeader:
       linkType: internal
       linkURL: /about
 logoImage:
-  image: /images/android-chrome-512x512.png
+  image: /images/logo-red.png
   imageAlt: Logo Image
   imageLabel: My New Site Logo
   imageWidth: 30
   locationDesktop: left
   locationMobile: center
-css:
-  styles: ''
 ---
 
