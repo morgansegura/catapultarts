@@ -14,7 +14,7 @@ logoImage:
   image: /images/logo-red.png
   imageAlt: Logo Image
   imageLabel: My New Site Logo
-  imageWidth: 30
+  imageWidth: 50
   locationDesktop: left
   locationMobile: center
 ---
